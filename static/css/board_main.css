@@ -1,0 +1,278 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+.banner { /*상단 배너 부분(이미지 + 택시 요금 정보)*/
+    background-color: #F9E3A7;
+    padding-bottom: 8%;
+    box-shadow: 0px 5px 5px rgba(249, 227, 167, 1);
+    /* border-radius: 0 0 25px 25px; */
+}
+
+.banner-img { /*택시 이미지*/
+    text-align: center;
+}
+
+.info-text { /*택시 요금 정보~ 상황에 따라 다를 수 있습니다 등의 상단 글자들*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0% 4%;
+    margin: 4% 0%;
+}
+
+.info-title { /*택시 요금 정보 텍스트*/
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#api-btn{ /*요금 정보 불러오기 버튼*/
+    border: none;
+    border-radius: 50%;
+    background-color: #FFCD4A;
+    width: 20px;
+    height: 20px;
+    margin-top: 5%;
+    box-shadow: 2px 2px 0px rgba(192, 190, 147, 0.25);
+}
+
+.refresh-btn { /*요금 정보 불러오기 버튼 감싼 div*/
+    margin-left: 2%;
+}
+
+#api-btn > img { /*요금 정보 불러오기 버튼 이미지(아이콘) */
+    margin-bottom: 100%;
+}
+ 
+.warn-text { /* ※ 상황에 따라 요금이 다를 수 있습니다. 텍스트*/
+    font-size: 11px;
+    margin-left: auto;
+    margin-top: 0.7%;
+}
+
+.taxi-fee { /* 요금 정보 부분*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0% 4%;
+}
+
+.fee-box { /*요금 정보 박스들*/
+    background-color: white;
+    width: 30%;
+    height: 5.5rem;
+    padding: 1%;
+    font-weight: 500;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 7px 0px rgba(215, 222, 249, 0.25);
+}
+
+.fee-title { /*택시 요금 경로 텍스트*/
+    margin: 13% 0% 7% 0%;
+    font-size: 13px;
+}
+
+.fee { /*택시 가격 텍스트*/
+    font-size: 15px;
+}
+
+.post { /*게시판 글 전체 div*/
+    padding: 4%;
+}
+
+.post-hd { /* 게시글 상단(프로필, 닉네임, 모집종료 아이콘, 경로)*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.user-profile > img { /*프로필 사진*/
+    width: 24px;
+    height: 24px;
+}
+
+.user-profile { /*프로필 div*/
+    margin-right: 2%;
+}
+
+.user-nickname { /*nickname div*/
+    font-size: 14px;
+    margin-top: 1%;
+    font-weight: 500;
+}
+
+.end-icon { /*모집 종료 아이콘 div*/
+    margin-top: 0.2%;
+    margin-left: 2%;
+}
+
+
+.route { /*경로 div*/
+    margin-left: auto;
+    color: #5D6DBE;
+    font-size: 12px;
+    margin-top: 1%;
+}
+
+.post-content { /*게시글 내용*/
+    margin: 4% 0% 7% 0%;
+    line-height: 1.6rem;
+    font-size: 15px;
+    word-break: break-all;
+}
+
+.post-ft { /*게시글 하단(인원수, 버튼) div*/
+    margin-bottom: 17%;
+}
+
+.people-count { /*인원수 div*/
+    font-size: 13px;
+    padding-top: 1.5%;
+    float: left;
+    width: 50%;
+}
+
+.people-count > img { /*사람들 아이콘*/
+    width: 24px;
+    height: 19px;
+}
+
+.people-count > span { /*참여인원 부분*/
+    margin-left: 2%;
+}
+
+.post-btn { /*참여하기(or 종료하기) 버튼 div*/
+    float: right;
+}
+
+.post-btn > button { /*참여하기(or 종료하기) 버튼*/
+    border: none;
+    background-color: #F9E3A7;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 5.5rem;
+    height: 2rem;
+    padding-top: 2%;
+}
+
+.line { /*구분선 div*/
+    clear: both;
+    border: 1px solid #EFEFEF;
+}
+
+.write-btn { /* 글 작성하기 버튼(+)*/
+    background-color: #FFCD4A;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 347px;
+    border: none;
+}
+
+.up-btn { /*맨 위로 이동하기 버튼(↑)*/
+    opacity: 0.9;
+    background-color: #f8e9bf;
+    border: none;
+    width: 4em;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+}
+
+.up-btn > img { /*화살표 아이콘*/
+    width: 30px;
+    height: 29px;
+}
+

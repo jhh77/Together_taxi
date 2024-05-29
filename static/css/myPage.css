@@ -1,0 +1,166 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+.profile { /*프로필 부분*/
+    height: 18rem;
+    background-color: #F9E3A7;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.profile > img { /*프로필 사진*/
+    margin-top: 12%;
+}
+
+.nickname { /*닉네임*/
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 2%;
+}
+
+#user-group { /*내가 쓴 모임, 참여한 모임 정보*/
+    width: 92%;
+    margin: 0 auto;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+    height: 7rem;
+    padding: 3%;
+}
+
+#user-group > .col { 
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#user-group > :nth-child(1) { /*중앙선을 위해*/
+    border-right: 1px solid #d5d5d5;
+}
+
+.user-write-img { /*작성한 모임 아이콘*/
+    margin: 5% 0% 4% 0%;
+}
+
+.user-write { /* "내가 작성한 모임" */
+    margin-right: 6%; 
+}
+
+.user-participate-img { /*참여한 모임 아이콘*/
+    margin: 3% 0% 0.9% 10%;
+}
+
+.user-participate { /* "내가 참여한 모임" */
+    margin-left: 10%; 
+}
+
+
+.accoount-setting, .other-setting { /*계정 설정과 기타 설정 묶음 div*/
+    margin: 0% 4%;
+    border-bottom: 1px solid #d5d5d5;
+    padding-bottom: 5%;
+}
+
+.other-setting { /* 기타 설정들*/
+    border: none;
+}
+
+.account-text, .other-text { /*계정과 기타 큰 글씨들*/
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4%;
+    margin-top: 10%;
+}
+
+.accoount-setting a, .other-setting button { /* 각종 설정들 */
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.other-setting button { /*기타 설정들*/
+    border: none;
+    background-color: white;
+    padding: 0;
+}
+
+.passwd-change, .nickname-change, .logout, .user-delete { /*각종 설정들 글자*/
+    margin-bottom: 3%;
+}

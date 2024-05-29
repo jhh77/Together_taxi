@@ -1,0 +1,148 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+.top-logo { /* 상단 로고 부분 */
+    height: 3rem;
+    background-color: #F9E3A7;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 3rem; /*텍스트 수직정렬*/
+    margin-bottom: 6%;
+}
+
+.check-box { /*라디오버튼들 div*/
+    margin-bottom: 4%;
+}
+
+.form-check { /*각각의 라디오버튼을 감싸고 있는 div*/
+    font-size: 14px;
+    padding-left: 1px;
+}
+
+.form-check-input[type=radio] { /*라디오버튼*/ 
+    border: 1px solid #5D6DBE;
+}
+
+#submit-btn { /*등록 버튼*/
+    border: none;
+    background-color: #FFCD4A;
+    /* font-size: 14px; */
+    margin-top: 5%;
+    width: 16%;
+    height: 2rem;
+    border-radius: 5px;
+    float: right;
+    margin-right: 4%;
+}
+
+.check-box .form-check-inline { /* 라디오버튼과 라벨 영역*/
+    margin: 0% 0% 0% 3%;
+}
+
+.line { /*구분선 div*/
+    clear: both;
+    border: 1px solid #EFEFEF;
+    margin-top: 18%;
+}
+
+#write-text { /* textarea*/
+    width: 92%;
+    margin: 0 auto;
+    margin: 6% 0% 0% 4%;
+    border: none;
+    resize: none;
+    word-break: break-all;
+    line-height: 1.6rem;
+    font-size: 15px;
+}
+
+#text-count { /*글자 수 표시 부분*/
+    width: 96%;
+    text-align: right;
+    color: #5D6DBE;
+}
+
+#write-text:focus { /*textarea focus*/
+    border-radius: 7px;
+    outline: 2px solid #FFCD4A;
+}

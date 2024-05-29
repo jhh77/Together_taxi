@@ -1,0 +1,485 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    /* outline: 1px solid black; */
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+.top-logo { /* 상단 로고 부분 */
+    height: 3rem;
+    background-color: #F9E3A7;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 3rem; /*텍스트 수직정렬*/
+}
+
+.post { /*게시판 글 전체 div*/
+    padding: 4%;
+    margin-bottom: 10%;
+}
+
+.post-hd { /* 게시글 상단(프로필, 닉네임, 모집종료 아이콘, 경로)*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.user-profile { /*프로필 div*/
+    margin-right: 2%;
+}
+
+.user-nickname { /*nickname div*/
+    font-size: 15px;
+    margin-top: 0.5%;
+    font-weight: 500;
+}
+
+.end-icon { /*모집 종료 아이콘 div*/
+    /* margin-top: 0%; */
+    margin-left: 2%;
+}
+
+.route { /*경로 div*/
+    margin-left: auto;
+    color: #5D6DBE;
+    font-size: 13px;
+    margin-top: 1%;
+}
+
+.post-content { /*게시글 내용*/
+    margin: 4% 0% 7% 0%;
+    line-height: 1.6rem;
+    font-size: 15px;
+    word-break: break-all;
+}
+
+.post-ft { /*게시글 하단(인원수, 버튼) div*/
+    margin-bottom: 20%;
+}
+
+.people-count { /*인원수 div*/
+    font-size: 13px;
+    padding-top: 1.5%;
+    float: left;
+    width: 50%;
+}
+
+.people-count > img { /*사람들 아이콘*/
+    width: 24px;
+    height: 19px;
+}
+
+.people-count > span { /*참여인원 부분*/
+    margin-left: 2%;
+}
+
+.post-btn { /*참여하기(or 종료하기) 버튼 div*/
+    float: right;
+}
+
+.state-btn { /*참여하기(or 종료하기) 버튼*/
+    border: none;
+    background-color: #F9E3A7;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 5.5rem;
+    height: 2rem;
+    padding-top: 2%;
+    line-height: 2rem;
+}
+
+.people-detail { /*참여한 인원 상세 div*/
+    clear: both;
+    border: 1px solid #d5d5d5; 
+    border-radius: 10px;
+}
+
+.title-text > img { /*참여한 사람 옆 아이콘*/
+    width: 20px;
+    height: 15px;
+    margin-right: 1%;
+}
+
+.title-text { /*참여한 사람과 아이콘 div*/
+    padding: 2%;
+    font-size: 14px;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.group-users { /*참여한 인원들 부분*/
+    margin-top: 1%;
+    padding: 2%;
+    font-size: 15px;
+}
+
+.comment-text { /*댓글 작성 텍스트와 아이콘 div*/
+    padding-left: 4%;
+    border-bottom: 1px solid #e5e5e5;
+    height: 2.7rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 3%;
+}
+
+.comment-img { /*댓글 모양 아이콘*/
+    margin-right: 2%;
+}
+
+.comment-title { /*댓글 작성 텍스트*/
+    margin-top: 0.5%;
+}
+
+#commnet-form { /*댓글 등록 폼*/
+    padding: 2% 4% 0% 4%;
+}
+
+#comment-area { /*댓글 쓰기 textarea*/
+    width: 100%;
+    border: none;
+    border-radius: 7px 7px 0px 0px;
+    resize: none;
+    word-break: break-all;
+    line-height: 1.6rem;
+    font-size: 14px;
+    padding: 2%;
+    overflow-y: hidden;
+}
+
+#comment-area:focus { /*댓글 쓰는 textarea에 focus 되면*/
+    outline: none;
+}
+
+.submit-btn { /*댓글 등록 버튼 div*/
+    text-align: right;
+    border-top: 0.8px solid #c5c5c5;
+}
+
+.submit-btn > button { /*댓글 등록 버튼*/
+    border: none;
+    background-color: #F9E3A7;
+    border-radius: 0 0 0 5px;
+    padding: 1% 4%;
+    font-size: 15px;
+}
+
+#commnet-form > div { /*댓글 쓰는 부분 큰 틀 div - 테두리를 주기 위해*/
+    border: 0.8px solid #c5c5c5;
+    border-radius: 7px;
+}
+
+#text-count { /*댓글 글자 수 세는 부분*/
+    width: 95%;
+    text-align: right;
+    font-size: 14px;
+    margin: 2% 0% 4% 0%;
+    color: #5D6DBE;
+}
+
+.line { /*구분선들 div*/
+    clear: both;
+    border-top: 1px solid #e5e5e5;
+}
+
+.user-comment { /*유저 댓글 큰 div*/
+    padding: 4%;
+}
+
+.comment-hd { /*댓글에서 상단부분(프로필, 닉네임, 댓글삭제)*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.comment-nickname { /*댓글 쓴 유저 닉네임*/
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0.8% 0% 0% 2%;
+}
+
+.comment-delete { /*댓글 지우기 부분*/
+    margin-left: auto;
+    font-size: 13px;
+    color: #717171;
+    text-decoration : underline;
+    cursor: pointer;
+}
+
+.comment-content { /*댓글 내용*/
+    width: 86%;
+    margin-left: 8%;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.comment-line { /*댓글 하단 구분선*/
+    border-top: 1px solid #d5d5d5;
+}
+
+#dots-btn { /*... 버튼*/
+    background-color: #F9E3A7;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    line-height: 3.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 347px;
+}
+
+.btns { /*수정하기, (글) 삭제하기 버튼 div*/
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 155px;
+    margin-left: 280px;
+}
+
+.btns > a {
+    text-decoration: none;
+}
+
+.delete-btn, .edit-btn { /*(글) 삭제하기, 수정하기 버튼*/
+    position: absolute;
+    display: block;
+    border: none;
+    width: 8rem;
+    height: 2.3rem;
+    border-radius: 20px;
+    bottom: 0;
+    font-weight: 500;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    display: none;
+}
+
+.edit-btn { /*수정하기 버튼*/
+    margin-bottom: 50px;
+    background-color: #FFCD4A;
+
+}
+
+.delete-btn { /*삭제하기 버튼*/
+    background-color: #E5E5E5;
+}
+
+#modal { /*모달 큰 div*/
+    width: 420px;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.modal-contents { /*모달창 div*/
+    box-shadow: 1px 5px 7px 0px rgba(130, 130, 130, 0.25);
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    z-index: 2;
+    border: 1px solid #EFEFEF;
+}
+
+.modal-contents a {
+    text-decoration: none;
+}
+
+.btn-close { /*모달창에 x 버튼*/
+    float: right;
+    margin: 4% 4% 0 0;
+}
+
+.btn-close:before { /*모달창에 x 버튼 꾸미기 */
+    /* 닫기 버튼의 'X' 아이콘 색상 변경 (SVG 필터 사용) */
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M.646 1.354a.5.5 0 0 1 .708 0L8 8.293l6.646-6.647a.5.5 0 0 1 .708.708L8.707 9l6.647 6.646a.5.5 0 0 1-.708.708L8 9.707l-6.646 6.647a.5.5 0 0 1-.708-.708L7.293 9 .646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    mask-size: cover;
+    background-color: #d6d6d6; /* 'X' 아이콘 색상 */
+}
+
+.modal-title { /*글을 삭제하시겠습니까 텍스트*/
+    font-size: 20px;
+    margin-top: 18%;
+    font-weight: 500;
+}
+
+.closePopup, .delete_post { /*아니오, 네 버튼*/
+    width: 26%;
+    border-radius: 10px;
+    height: 2.2rem;
+    margin-top: 8%;
+}
+
+.closePopup { /*아니오 버튼 - 글을 지우지 않음*/
+    background-color: #E5E5E5;
+    display:inline;
+    float: left;
+    margin-left: 18%;
+    text-align: center;
+    line-height: 2.2rem;
+    color: black;
+}
+
+.delete_post { /*네 버튼 - 글을 지움*/
+    border: none;
+    background-color: #FFCD4A;
+    margin-right: 7%;
+}
+
+.settle-modal { /*정산하기 모달창*/
+    background-color: white;
+    border: 1px solid #d5d5d5;
+    position: fixed;
+    width: 420px;
+    height: 24%;
+    z-index: 1;
+    bottom: 0;
+    margin-bottom: 57px;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px -5px 5px 0px rgba(197, 197, 197, 0.25);
+    display: none;
+}
+
+.settle-modal-title { /*정산하기 텍스트*/
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 5%;
+    padding: 4%;
+}
+
+.settle-form > input { /*정산 가격 입력 부분*/
+    width: 92%;
+    border: none;
+    border-bottom: 1px solid #9f9f9f;
+    margin-bottom: 10%;
+    margin-left: 4%;
+    overflow-y: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { /*input type을 number로 해서 증감스크롤 없애기 위해*/
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.settle-form > input::placeholder { /*정산 가격 입력 부분 placeholder*/
+    font-size: 14px;
+}
+
+.settle-form > input:focus { /*정산 가격 입력 부분에 focus*/
+    outline: none;
+}
+
+.cancel-btn,.yes-btn { /*취소, 확인 버튼*/
+    width: 50%;
+    height: 4.2rem;
+    border: none;
+    border-top: 1px solid #d5d5d5;
+}
+
+.cancel-btn { /*취소 버튼*/
+    float: left;
+    background-color: white;
+}
+
+.yes-btn { /*확인 버튼*/
+    float: right;
+    background-color: #F9E3A7;
+}

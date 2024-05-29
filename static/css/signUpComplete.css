@@ -1,0 +1,77 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+.top-logo { /* 상단 로고 부분 */
+    height: 3rem;
+    background-color: #F9E3A7;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 3rem; /*텍스트 수직정렬*/
+    margin-bottom: 40%;
+}
+
+img { /*회원가입 완료 이미지*/
+    object-fit: cover;
+    width: 36%;
+    height: 36%;
+    margin: 0 auto;
+}
+
+.complete-text, .text { /*완료 문구들*/
+    text-align: center;
+}
+
+.complete-text { /*회원가입 완료 문구*/
+    font-size: 24px;
+    margin: 1% 0% 3% 0%;
+}
+
+.text { /*가입 완료 문구*/
+    font-size: 16px;
+}
+
+button { /*확인 버튼*/
+    position: fixed;
+    bottom: 0;
+    font-size: 19px;
+    background-color: #F9E3A7;
+    width: 420px;
+    height: 3rem;
+    z-index: 1;
+    border: none;
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    cursor: pointer;
+}

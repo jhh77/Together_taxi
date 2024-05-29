@@ -1,0 +1,157 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+.home-img { /*메인화면 이미지*/
+    margin-bottom: 5%;
+}
+
+#group-info { /*회원의 모임 정보 관련*/
+    position: absolute;
+    width: 93%;
+    margin: 73% 0% 0% 3.5%;
+    height: 13%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 3%;
+    /* box-shadow: 0px 4px 7px rgba(219, 219, 219, 0.45); */
+    box-shadow: 0px 0px 20px 0px rgba(255, 205, 74, 1);
+}
+
+#group-info > .col { /*참여횟수와 개설횟수 div*/
+    /* outline: 1px solid red; */
+    text-align: center;
+    font-size: 14px;
+}
+
+#group-info > :nth-child(1) { /*가운데 줄을 위해서*/
+    border-right: 1px solid #d5d5d5;
+}
+
+.info-name-participate { /*참여 횟수 텍스트*/
+    margin: 5% 3% 4% 0%;
+    /* outline: 1px solid red; */
+}
+
+.info-name-open { /* 개설 횟수 텍스트*/
+    margin: 5% 0% 4% 6%;
+}
+
+.open-count { /*개설 횟수 숫자*/
+    margin-left: 8%;
+}
+
+.participate-count { /*참여 횟수 숫자*/
+    margin-right: 4%;
+}
+
+.pay { /*송금 내역 */
+    padding: 0% 4%;
+}
+
+.pay-title { /*잠깐! 송금하셨어요?*/
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 2%;
+}
+
+.pay-title > img { /*돈 모양 이미지*/
+    width: 6%;
+    height: 6%;
+    margin: 0% 1% 1% 0%;
+}
+
+.pay-check { /*송금 내역 체크리스트들*/
+    border: 1px solid #D5D5D5;
+    height: 100%;
+    border-radius: 10px;
+    padding: 3%;
+    box-shadow: 0px 4px 7px 	rgb(215, 222, 249, 0.25);
+}
+
+.pay-detail > img { /*체크리스트 아이콘 이미지*/
+    margin: 0% 2% 1% 0%;
+    cursor: pointer;
+}
+
+.pay-detail > div { /*송금 관련 정보*/
+    display: inline-block;
+    margin-top: 1%;
+}
