@@ -83,11 +83,11 @@ body {
     height: 2.9rem;
     border-radius: 10px;
     border: 1px solid #a5a5a5;
+    padding: 3%;
 }
 
 .signUp-form div input::placeholder { /*input들의 placeholder css*/
     font-size: 15px;
-    padding: 3%;
     color: #c5c5c5;
 }
 
@@ -97,7 +97,7 @@ body {
     box-shadow: 0px 4px 8px 0px #f0f0f0;
 }
 
-#user_id, #password { /*옆에 버튼 있는 input들*/
+#user_id, #password1 { /*옆에 버튼 있는 input들*/
     width: 80%;
     margin-right: 1%;
 }
@@ -139,4 +139,10 @@ input::-webkit-inner-spin-button { /*input type을 number로 해서 증감스크
     bottom: 0;
     z-index: 1;
     border: none;
+}
+
+#idCheckResponse { /*아이디 중복검사 결과*/
+    font-size: 13px;
+    color: #5D6DBE;
+    font-weight: 500;
 }
