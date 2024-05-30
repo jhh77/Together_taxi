@@ -67,11 +67,11 @@ body {
     border-radius: 7px;
     margin-bottom: 7%;
     border: 1px solid #a5a5a5;
+    padding: 3%;
 }
 
 .login-form input::placeholder { /*입력 부분 예시 css*/
     font-size: 15px;
-    padding: 3%;
     color: #c5c5c5;
 }
 

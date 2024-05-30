@@ -31,11 +31,13 @@ $('#idCheckBtn').click(function () {
                 if (data.is_taken) {
                     $('#idCheckSuccess').val("false"); // 중복 검사 실패
                     $('#idCheckResponse').text('이미 사용 중인 아이디입니다.');
+                    $('#idCheckResponse').css('color', '#E07070');
                     $('#user_id').focus()
 
                 } else {
                     $('#idCheckSuccess').val("true"); // 중복 검사 성공
                     $('#idCheckResponse').text('사용 가능한 아이디입니다.');
+                    $('#idCheckResponse').css('color', '#5D6DBE');
                 }
             }
         });

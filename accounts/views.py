@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
 
-
+#회원가입
 def signUp(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -40,6 +40,6 @@ def check_id(request): #아이디 중복검사
     is_taken = Member.objects.filter(user_id=user_id).exists() #아이디값이 존재하는지
     return JsonResponse({'is_taken': is_taken}) #결과 전송(json으로)
 
-
+#회원가입 완료 페이지로 이동?
 def signUpComplete(request):
     return render(request, 'accounts/signUpComplete.html')
