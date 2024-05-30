@@ -127,3 +127,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.Member' #회원가입 모델 커스터마이징을 위해
+
+# 로그인 성공후 이동하는 URL
+LOGIN_REDIRECT_URL = '/'
+
+#세션 만료 시간 설정
+# SESSION_COOKIE_AGE = 60  # 1 hour, in seconds

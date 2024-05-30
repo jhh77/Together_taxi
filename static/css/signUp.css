@@ -141,8 +141,8 @@ input::-webkit-inner-spin-button { /*input type을 number로 해서 증감스크
     border: none;
 }
 
-#idCheckResponse { /*아이디 중복검사 결과*/
-    font-size: 13px;
-    color: #5D6DBE;
+#idCheckResponse, .error { /*아이디 중복검사 결과, 데이터 검증 중 오는 에러 메시지*/
+    font-size: 14px;
+    color: #E07070;
     font-weight: 500;
 }

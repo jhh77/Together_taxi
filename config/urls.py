@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts import views
 
 urlpatterns = [
+    path('', views.index, name='index'), #루트 페이지 설정(고치자..)
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
 ]
