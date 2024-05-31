@@ -7,10 +7,14 @@ from .models import Member
 from django.shortcuts import render, redirect
 from accounts.forms import SignupForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
-def index(request):
-    return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
+def index(request): #루트 페이지
+    if request.user.is_authenticated:
+        return render(request, 'accounts/home.html')
+    else:
+        return render(request, 'accounts/login.html')
 
 #회원가입
 def signUp(request):
@@ -43,3 +47,14 @@ def check_id(request): #아이디 중복검사
 #회원가입 완료 페이지로 이동?
 def signUpComplete(request):
     return render(request, 'accounts/signUpComplete.html')
+
+
+#마이페이지
+def user_page(request):
+    return render(request, 'accounts/myPage.html')
+
+
+#로그아웃
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:login')

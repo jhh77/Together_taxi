@@ -164,3 +164,8 @@ body {
 .passwd-change, .nickname-change, .logout, .user-delete { /*각종 설정들 글자*/
     margin-bottom: 3%;
 }
+
+.logout a {
+    text-decoration: none;
+    color: black;
+}
