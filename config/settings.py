@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'boards.apps.BoardsConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.Member' #회원가입 모델 커스터마이징을 위해
+AUTH_USER_MODEL = 'accounts.Member' #회원가입 모델 커스터마이징 설정
 
 # 로그인 성공후 이동하는 URL
 LOGIN_REDIRECT_URL = '/'

@@ -7,6 +7,10 @@ body {
     height: 100%;
 }
 
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
 /*전체 영역*/
 .container-content {
     font-family: 'SCoreDream';
@@ -143,7 +147,7 @@ body {
     height: 100%;
     border-radius: 10px;
     padding: 3%;
-    box-shadow: 0px 4px 7px 	rgb(215, 222, 249, 0.25);
+    box-shadow: 0px 4px 7px rgb(215, 222, 249, 0.25);
 }
 
 .pay-detail > img { /*체크리스트 아이콘 이미지*/

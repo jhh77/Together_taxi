@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index, name='index'), #루트 페이지 설정(고치자..)
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('boards/', include('boards.urls')),
 ]
