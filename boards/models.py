@@ -9,18 +9,24 @@ class MeetingStatus(models.Model):
     status_number = models.IntegerField(primary_key=True, null=False)
     button_text = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.button_text
+
 
 # 모임 경로 정보 테이블
 class RouteInfo(models.Model):
     route_id = models.IntegerField(primary_key=True, null=False)
     value = models.CharField(max_length=10, null=False)
 
+    def __str__(self):
+        return self.value
+
 
 # 모임 테이블
 class Meeting(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='hosted_meetings')
     meeting_content = models.TextField(null=False, blank=False)
-    status = models.ForeignKey(MeetingStatus, default=0, on_delete=models.CASCADE)
+    status = models.ForeignKey(MeetingStatus, on_delete=models.CASCADE)
     route = models.ForeignKey(RouteInfo, on_delete=models.CASCADE, null=False, blank=False)
     total_amount = models.IntegerField(null=False, default=0)
     participant_count = models.IntegerField(default=1)

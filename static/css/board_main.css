@@ -160,6 +160,8 @@ body {
 
 .post { /*게시판 글 전체 div*/
     padding: 4%;
+    color: black;
+    text-decoration: none;
 }
 
 .post-hd { /* 게시글 상단(프로필, 닉네임, 모집종료 아이콘, 경로)*/
@@ -204,6 +206,11 @@ body {
     word-break: break-all;
 }
 
+.detail_link { /*콘텐츠 누르면 detail 페이지로 이동하기 위한 a 태그*/
+    text-decoration: none;
+    color: black;
+}
+
 .post-ft { /*게시글 하단(인원수, 버튼) div*/
     margin-bottom: 17%;
 }
@@ -236,6 +243,11 @@ body {
     width: 5.5rem;
     height: 2rem;
     padding-top: 2%;
+}
+
+.post-btn > button > a { /*버튼들 링크*/
+    text-decoration: none;
+    color: black;
 }
 
 .line { /*구분선 div*/

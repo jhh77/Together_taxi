@@ -150,6 +150,6 @@ input::-webkit-inner-spin-button { /*input type을 number로 해서 증감스크
     font-weight: 500;
 }
 
-#error { /*데이터 검증 중 오는 에러 메시지*/
+.error { /*데이터 검증 중 오는 에러 메시지*/
     color: #E07070;
 }

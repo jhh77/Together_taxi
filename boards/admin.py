@@ -13,7 +13,7 @@ class RouteInfoAdmin(admin.ModelAdmin):
 
 
 class MeetingAdmin(admin.ModelAdmin):
-    list_display = ['user_id', 'meeting_content', 'status', 'route', 'total_amount', 'participant_count', 'created_at']
+    list_display = ['id', 'user_id', 'meeting_content', 'status', 'route', 'total_amount', 'participant_count', 'created_at']
 
 
 class ParticipationAdmin(admin.ModelAdmin):
