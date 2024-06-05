@@ -14,37 +14,57 @@
                 게시판
             </div>
 
-            <div class="post"> <!--⭐⭐반복문? 유저들이 작성한 글-->
+            <div class="post"> <!--⭐⭐-->
                 <div class="post-hd"> <!--프로필, 닉네임, 모집종료 아이콘, 경로-->
                     <div class="user-profile"> <!--프로필 사진-->
                         <img src="../../static/image/profile-post-detail.png" alt="">
                     </div>
 
-                    <div class="user-nickname"> <!-- 닉네임 -->
-                        나리
+                    <div class="user-nickname"> <!-- ⭐⭐닉네임 -->
+                        {{ meeting.user_id.nickname }}
                     </div>
 
-                    <div class="end-icon"> <!--모임 종료 아이콘 -->
-                        <img src="../../static/image/end-icon.png" alt="">
-                    </div>
+                    {% if meeting.status.status_number > 0 %}
+                        <div class="end-icon"> <!--모임 종료 아이콘 -->
+                            <img src="../../static/image/end-icon.png" alt="">
+                        </div>
+                    {% endif %}
 
-                    <div class="route"> <!-- 경로 -->
-                        왕십리역 ↔ 학교
+                    <div class="route"> <!--⭐⭐ 경로 -->
+                        {{ meeting.route }}
                     </div>
                 </div>
 
-                <div class="post-content"> <!--게시글 내용-->
-                    당신이 지금 이 메시지를 읽고 있다는 것은 상당히 멋진 일이에요! 여기까지 오는 길에 많은 노력이 필요했을 거예요. 꿈을 향해 나아가는 모습은 참으로 멋지고
+                <div class="post-content"> <!--⭐⭐게시글 내용-->
+                    {{ meeting.meeting_content }}
                 </div>
 
                 <div class="post-ft"> <!--인원수, 참여하기(or 종료하기) 버튼-->
                     <div class="people-count"> <!--인원수-->
                         <img src="../../static/image/people.png" alt=""> <!--사람들 아이콘-->
-                        <span>2명 / 4명</span> <!--⭐⭐ 인원수 글자 -->
+                        <span>{{ meeting.participant_count }}명 / 4명</span> <!--⭐⭐ 인원수 글자 -->
                     </div>
 
                     <div class="post-btn"> <!--참여하기(or 종료하기) 버튼-->
-                        <button type="button" class="state-btn">정산하기</button> <!--⭐⭐내용 바뀌어야...-->
+                        {% load custom_tags %}
+                        {% button_text meeting.id as Participant_list%}
+                        {% if meeting.user_id == request.user %}
+                            {% if meeting.status.status_number == 0 %}
+                                <button type="button"><a href="#">모집종료</a></button>
+                            {% elif meeting.status.status_number == 1 %}
+                                <button type="button"><a href="#">정산하기</a></button>
+                            {% else %}
+                                <button type="button"><a href="#">완료하기</a></button>
+                            {% endif %}
+                        {% else %}
+                            {% if meeting.status.status_number == 0 %}
+                                {% if Participant_list %}
+                            	    <button type="button"><a href="#">참여취소</a></button>
+                                {% else %}
+                                    <button type="button"><a href="#">참여하기</a></button>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
 
@@ -55,7 +75,9 @@
                     </div>
 
                     <div class="group-users"> <!--⭐⭐ 택시 모임에 참여한 인원 부분-->
-                        나리1 나리2
+                        {% for member in participant %}
+                            <span class="members">{{ member.meeting.user_id.nickname }}</span>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -66,7 +88,7 @@
                     <div class="comment-title">댓글 작성</div>
                 </div>
 
-                <form action="" method="post" id="commnet-form"> <!--⭐⭐댓글 등록 textarea-->
+                <form action="" method="post" id="comment-form"> <!--⭐⭐댓글 등록 textarea-->
                     {% csrf_token %}
                     <div>
                         <textarea name="comment" id="comment-area" placeholder="댓글 작성" maxlength="99"></textarea>
@@ -114,12 +136,14 @@
             </div>
             <div class="comment-line"></div> <!--댓글 끝-->
 
-            <button type="button" id="dots-btn"> <!--⭐... 버튼-->
-                <img src="../../static/image/dots.png" alt="">
-            </button>
+            {% if meeting.user_id == request.user %}
+                <button type="button" id="dots-btn"> <!--⭐... 버튼-->
+                    <img src="../../static/image/dots.png" alt="">
+                </button>
+            {% endif %}
 
             <div class="btns">
-                <a href="../../template/board_edit.html">
+                <a href="board_edit.html">
                     <button type="button" class="edit-btn">수정하기</button> <!--⭐⭐수정하기 버튼-->
                 </a>
 

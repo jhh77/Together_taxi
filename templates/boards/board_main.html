@@ -59,10 +59,10 @@
                     </div>
 
                     <div class="user-nickname"> <!-- 닉네임 -->
-                        {{ meeting.user_id }}
+                        {{ meeting.user_id.nickname }}
                     </div>
 
-                    {% if meeting.status > 0 %}
+                    {% if meeting.status.status_number > 0 %}
                         <div class="end-icon"> <!--모임 종료 아이콘 -->
                             <img src="../../static/image/end-icon.png" alt="">
                         </div>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <a href="#" class="detail_link">
+                <a href="/boards/{{ meeting.id }}" class="detail_link">
                     <div class="post-content"> <!--게시글 내용-->
                         {{ meeting.meeting_content }}
                     </div>
@@ -82,7 +82,7 @@
                 <div class="post-ft"> <!--인원수, 참여하기(or 종료하기) 버튼-->
                     <div class="people-count"> <!--인원수-->
                         <img src="../../static/image/people.png" alt=""> <!--사람들 아이콘-->
-                        <span>{{ meeting.participant_count }} / 4명</span> <!--⭐⭐ 인원수 글자 -->
+                        <span>{{ meeting.participant_count }}명 / 4명</span> <!--⭐⭐ 인원수 글자 -->
                     </div>
                     <div class="post-btn">
                         {% if meeting.user_id == request.user %}
