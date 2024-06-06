@@ -21,7 +21,7 @@ class ParticipationAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['meeting', 'user', 'content']
+    list_display = ['id', 'meeting', 'user', 'content']
 
 
 class SettleUpAdmin(admin.ModelAdmin):

@@ -305,9 +305,10 @@ body {
 .comment-delete { /*댓글 지우기 부분*/
     margin-left: auto;
     font-size: 13px;
+}
+
+.comment-delete > a { /*댓글 지우기 링크 */
     color: #717171;
-    text-decoration : underline;
-    cursor: pointer;
 }
 
 .comment-content { /*댓글 내용*/

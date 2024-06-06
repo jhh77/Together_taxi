@@ -88,10 +88,10 @@
                     <div class="comment-title">댓글 작성</div>
                 </div>
 
-                <form action="" method="post" id="comment-form"> <!--⭐⭐댓글 등록 textarea-->
+                <form action="/boards/{{ meeting.id }}/" method="post" id="comment-form"> <!--⭐⭐댓글 등록 textarea-->
                     {% csrf_token %}
                     <div>
-                        <textarea name="comment" id="comment-area" placeholder="댓글 작성" maxlength="99"></textarea>
+                        <textarea name="content" id="comment-area" placeholder="댓글 작성" maxlength="99"></textarea>
                         <div class="submit-btn">
                             <button type="submit">등록</button>
                         </div>
@@ -103,38 +103,24 @@
 
             <div class="line"></div> <!--구분선-->
 
+            {% for comment in comments %}
             <div class="user-comment"> <!--⭐⭐ 댓글들-->
                 <div class="comment-hd"> <!--댓글 윗부분 영역-->
                     <div><img src="../../static/image/profile-post-detail.png" alt=""></div> <!--프로필 사진-->
-                    <div class="comment-nickname">나리1</div> <!--닉네임-->
-                    <div class="comment-delete">삭제</div>
+                    <div class="comment-nickname">{{ comment.user.nickname }}</div> <!--닉네임-->
+                    {% if comment.user == request.user %}
+                        <div class="comment-delete"><a href="#">삭제</a></div>
+                    {% else %}
+                        <div class="comment-delete"></div>
+                    {% endif %}
                 </div>
 
                 <div class="comment-content"> <!--댓글 내용-->
-                    라면 레시피
-                    1. 재료를 준비한다.
-                    2. 물을 끓인다.
-                    3. 스프를 넣는다.
-                    4. 면을 넣는다.
-                    5. 맛있게 먹는다.
+                    {{ comment.content }}
                 </div>
             </div>
             <div class="comment-line"></div> <!--댓글 구분선-->
-
-            <div class="user-comment"> <!--⭐⭐ 댓글들-->
-                <div class="comment-hd"> <!--댓글 윗부분 영역-->
-                    <div><img src="../../static/image/profile-post-detail.png" alt=""></div> <!--프로필 사진-->
-                    <div class="comment-nickname">나리1</div> <!--닉네임-->
-                    <div class="comment-delete">삭제</div>
-                </div>
-
-                <div class="comment-content"> <!--댓글 내용-->
-                    코드 올려줄테니 복붙해서 가져가세요~<br>
-                    냐옹 냐아옹
-                    ....?
-                </div>
-            </div>
-            <div class="comment-line"></div> <!--댓글 끝-->
+            {% endfor %}
 
             {% if meeting.user_id == request.user %}
                 <button type="button" id="dots-btn"> <!--⭐... 버튼-->
@@ -143,7 +129,7 @@
             {% endif %}
 
             <div class="btns">
-                <a href="board_edit.html">
+                <a href="{% url 'boards:edit' meeting.id %}">
                     <button type="button" class="edit-btn">수정하기</button> <!--⭐⭐수정하기 버튼-->
                 </a>
 
@@ -156,11 +142,10 @@
                     <button type="button" class="btn-close"></button>
                     <div class="modal-title">글을 삭제하시겠습니까?</div>
                     <a href="#"><div class="closePopup">아니오</div></a>
-                    <a href="#">
-                        <form class="yesBtn" method="post">
-                            <button type="button" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
-                        </form>
-                    </a>
+                    <form class="yesBtn" method="post" action="{% url 'boards:delete' meeting.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
+                    </form>
                 </div>
             </div>
 

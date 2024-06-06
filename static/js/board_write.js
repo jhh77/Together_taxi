@@ -13,9 +13,13 @@ $('#write-text').on('input', function() {
     }
 });
 
-//페이지 로딩 시 textare에 focus 주기
+//페이지 로딩 시 textarea에 focus 주기 + 원래 컨텐츠 길이 표시하기
 $(document).ready(function() {
-    $('#write-text').focus();
+    const write = $('#write-text');
+    write.focus();
+    const textLength = write.val().length;
+    console.log(textLength);
+    $('#text-count').text(textLength + ' / 150');
 });
 
 //경로를 하나도 선택하지 않으면 폼 제출 막기
