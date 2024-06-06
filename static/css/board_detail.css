@@ -302,13 +302,17 @@ body {
     margin: 0.8% 0% 0% 2%;
 }
 
-.comment-delete { /*댓글 지우기 부분*/
-    margin-left: auto;
-    font-size: 13px;
+.comment-delete-btn { /*댓글 삭제 버튼*/
+    border: none;
+    background-color: white;
+    color: #717171;
+    text-decoration: underline;
+    text-underline: #717171;
 }
 
-.comment-delete > a { /*댓글 지우기 링크 */
-    color: #717171;
+.comment-delete { /*댓글 지우기 부분(div, form)*/
+    margin-left: auto;
+    font-size: 13px;
 }
 
 .comment-content { /*댓글 내용*/

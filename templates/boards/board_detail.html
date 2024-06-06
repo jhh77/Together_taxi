@@ -109,7 +109,10 @@
                     <div><img src="../../static/image/profile-post-detail.png" alt=""></div> <!--프로필 사진-->
                     <div class="comment-nickname">{{ comment.user.nickname }}</div> <!--닉네임-->
                     {% if comment.user == request.user %}
-                        <div class="comment-delete"><a href="#">삭제</a></div>
+                        <form action="{% url 'boards:comment-delete' meeting.id comment.id %}" method="post" class="comment-delete">
+                            {% csrf_token %}
+                            <button type="submit" class="comment-delete-btn">삭제</button>
+                        </form>
                     {% else %}
                         <div class="comment-delete"></div>
                     {% endif %}

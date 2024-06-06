@@ -106,3 +106,11 @@ def board_delete(request, meeting_id):
         return redirect('boards:main')
     else:
         return render(request, 'boards/board_main.html')
+
+
+# 댓글 삭제하기
+def comment_delete(request, meeting_id, comment_id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.delete()
+        return redirect('boards:detail', meeting_id=meeting_id)

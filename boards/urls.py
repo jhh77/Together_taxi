@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:meeting_id>/', views.board_detail, name='detail'),
     path('<int:meeting_id>/edit/', views.board_edit, name='edit'),
     path('<int:meeting_id>/delete/', views.board_delete, name='delete'),
+    path('<int:meeting_id>/comment-delete/<int:comment_id>/', views.comment_delete, name='comment-delete'),
 ]
