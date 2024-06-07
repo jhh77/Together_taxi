@@ -4,17 +4,55 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import Member
+from boards.models import *
 from django.shortcuts import render, redirect
 from accounts.forms import SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import timedelta
+
 
 
 def index(request): #루트 페이지
+    participate_count = 0
     if request.user.is_authenticated:
-        return render(request, 'accounts/home.html')
+        # 모임 참여 횟수 구하기
+        meetings = Participation.objects.filter(user=request.user)
+        for meeting in meetings:
+            meeting_detail = Meeting.objects.get(id=meeting.meeting_id)
+            # print(meeting_detail.status.status_number >= 1)
+            if meeting_detail.status.status_number >= 1:
+                participate_count += 1
+
+        # 모임 개설 횟수 구하기
+        open_meeting_list = Meeting.objects.filter(user_id=request.user)
+        meeting_open_count = len(open_meeting_list)
+
+        # 정산 내역 가져오기
+        now = timezone.now()
+        five_days_ago = now - timedelta(days=5)
+        settle_list = SettleUp.objects.filter(user=request.user, created_at__gte=five_days_ago)
+        context = {
+            'participate_count': participate_count,
+            'meeting_open_count': meeting_open_count,
+            'settle_list': settle_list,
+        }
+        return render(request, 'accounts/home.html', context)
     else:
         return render(request, 'accounts/login.html')
+
+
+# 정산 내역 체크
+def settle_check(request, settle_id):
+    settle = SettleUp.objects.get(id=settle_id)
+    if settle.is_check:
+        settle.is_check = False
+    else:
+        settle.is_check = True
+    settle.save()
+    return redirect('/')
+
 
 #회원가입
 def signUp(request):

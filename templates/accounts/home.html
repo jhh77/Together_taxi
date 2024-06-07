@@ -16,35 +16,39 @@
             <div class="row" id="group-info"> <!--모임 횟수 관련 부분-->
                 <div class="col">
                     <div class="info-name-participate">모임 참여 횟수</div>
-                    <div class="participate-count">0</div> <!--⭐⭐여기 회원의 모임 참여 횟수-->
+                    <div class="participate-count">{{ participate_count }}</div> <!--⭐⭐여기 회원의 모임 참여 횟수-->
                 </div>
                 <div class="col">
                     <div class="info-name-open">모임 개설 횟수</div>
-                    <div class="open-count">0</div> <!--⭐⭐여기 회원의 모임 개설 횟수-->
+                    <div class="open-count">{{ meeting_open_count }}</div> <!--⭐⭐여기 회원의 모임 개설 횟수-->
                 </div>
             </div>
 
             <div class="pay"> <!--송금 내역 관리 부분-->
                 <div class="pay-title">
                     <img src="../../static/image/money.svg" alt="">
-                    잠깐! 송금하셨나요?
+                    잠깐! 송금하셨나요? <span class="settle-notice">(5일 치 정산 내역이 보여집니다)</span>
                 </div>
 
                 <div class="pay-check"> <!--⭐⭐ 여기 송금 내역 관리-->
-                    <div class="pay-detail">
-                        <img src="../../static/image/not-check.png" alt="">
-                        <div>농협 123456-123456 2300원</div>
-                    </div>
-
-                    <div class="pay-detail">
-                        <img src="../../static/image/not-check.png" alt="">
-                        <div>농협 123456-123456 2300원</div>
-                    </div>
-
-                    <div class="pay-detail">
-                        <img src="../../static/image/not-check.png" alt="">
-                        <div>농협 123456-123456 2300원</div>
-                    </div>
+                    {% if not settle_list %}
+                        <div class="no-settle-img">
+                            <img src="../../static/image/no-settle.png" alt="">
+                        </div>
+                        <div class="no-settle-notice">정산 내역이 없어요!</div>
+                    {% endif %}
+                    {% for settle in settle_list %}
+                        <a href="{% url 'accounts:settle-check' settle.id %}">
+                            <div class="pay-detail">
+                                {% if settle.is_check %}
+                                    <img src="../../static/image/check.png" alt="">
+                                {% else %}
+                                    <img src="../../static/image/not-check.png" alt="">
+                                {% endif %}
+                                <div>{{ settle.bank }} {{ settle.account_no }} {{ settle.amount }}원</div>
+                            </div>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

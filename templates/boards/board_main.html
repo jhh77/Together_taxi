@@ -48,6 +48,14 @@
                 </div>
             </div><!--상단 배너 부분 끝-->
 
+            {% if not meeting_list %}
+                <div class="no-meeting-img">
+                    <img src="../../static/image/no-meeting.png" alt="">
+                </div>
+                <div class="no-meeting-notice">모임이 없습니다.</div>
+                <div class="no-meeting-notice-long">모임을 추가해 보세요!</div>
+            {% endif %}
+
             <!--⭐⭐반복문- 유저들이 작성한 글-->
             {% for meeting in meeting_list %}
                 {% load custom_tags %}

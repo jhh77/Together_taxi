@@ -158,7 +158,24 @@ body {
     font-size: 15px;
 }
 
+.no-meeting-img { /*모임 게시글 없을 때 이미지*/
+    margin: 0 auto;
+    padding: 15% 0% 7% 0%;
+}
+
+.no-meeting-notice { /*모임 게시글 없을 때 텍스트*/
+    margin-left: 38%;
+    opacity: 0.8;
+}
+
+.no-meeting-notice-long {
+    margin-top: 4%;
+    margin-left: 34%;
+    opacity: 0.8;
+}
+
 .post { /*게시판 글 전체 div*/
+    margin-top: 3%;
     padding: 4%;
     color: black;
     text-decoration: none;

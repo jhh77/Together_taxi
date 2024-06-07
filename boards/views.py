@@ -166,8 +166,8 @@ def board_settle(request, meeting_id):
                 SettleUp.objects.create(
                     meeting=meeting,
                     user=participant.user,
-                    bank=participant.user.bank,
-                    account_no=participant.user.account_no,
+                    bank=meeting.user_id.bank,
+                    account_no=meeting.user_id.account_no,
                     amount=amount
                 )
             # print(participant.user_id) # 모임의 모든 참여자 id(반복)

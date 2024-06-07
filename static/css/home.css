@@ -84,19 +84,20 @@ body {
 /*여기서부터 컨텐츠 영역*/
 
 .home-img { /*메인화면 이미지*/
-    margin-bottom: 5%;
+    margin-bottom: 8%;
+    box-shadow: 0px 5px 5px rgba(249, 227, 167, 1);
 }
 
 #group-info { /*회원의 모임 정보 관련*/
     position: absolute;
     width: 93%;
-    margin: 73% 0% 0% 3.5%;
-    height: 13%;
+    margin: 74% 0% 0% 3.5%;
+    height: 90px;
     border-radius: 10px;
     background-color: white;
     padding: 3%;
     /* box-shadow: 0px 4px 7px rgba(219, 219, 219, 0.45); */
-    box-shadow: 0px 0px 20px 0px rgba(255, 205, 74, 1);
+    /*box-shadow: 0px 0px 20px 0px rgba(255, 205, 74, 1);*/
 }
 
 #group-info > .col { /*참여횟수와 개설횟수 div*/
@@ -133,7 +134,7 @@ body {
 .pay-title { /*잠깐! 송금하셨어요?*/
     font-size: 18px;
     font-weight: 500;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
 }
 
 .pay-title > img { /*돈 모양 이미지*/
@@ -142,12 +143,34 @@ body {
     margin: 0% 1% 1% 0%;
 }
 
+.settle-notice { /*(5일 치 정산 내역이 보여집니다)*/
+    font-size: 12px;
+    color: #717171;
+    font-weight: 400;
+}
+
+.no-settle-img { /*정산내역 없을 때 이미지 div*/
+    margin: 5% 0% 5% 41%;
+    opacity: 0.9;
+}
+
+.no-settle-notice { /*정산 내역이 없어요! 텍스트*/
+    margin-left: 31%;
+    margin-bottom: 8%;
+    opacity: 0.5;
+}
+
 .pay-check { /*송금 내역 체크리스트들*/
     border: 1px solid #D5D5D5;
     height: 100%;
     border-radius: 10px;
     padding: 3%;
     box-shadow: 0px 4px 7px rgb(215, 222, 249, 0.25);
+}
+
+.pay-check a {
+    color: black;
+    text-decoration: none;
 }
 
 .pay-detail > img { /*체크리스트 아이콘 이미지*/

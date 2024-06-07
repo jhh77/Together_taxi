@@ -12,4 +12,5 @@ urlpatterns = [
     path('signUpComplete/', views.signUpComplete, name='signUpComplete'), #회원가입 완료
     path('user-page', views.user_page, name='user_page'), #마이페이지
     path('logout/', views.logout_view, name='logout'),
+    path('<int:settle_id>/settle-is-check/', views.settle_check, name='settle-check'),
 ]

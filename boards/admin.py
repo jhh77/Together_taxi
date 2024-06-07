@@ -25,7 +25,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class SettleUpAdmin(admin.ModelAdmin):
-    list_display = ['meeting', 'user', 'amount', 'is_check', 'created_at']
+    list_display = ['meeting', 'user', 'bank', 'account_no', 'amount', 'is_check', 'created_at']
 
 
 admin.site.register(MeetingStatus, MeetingStatusAdmin)
