@@ -49,6 +49,8 @@ class Comment(models.Model):
 class SettleUp(models.Model):
     meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, related_name='settle')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    bank = models.CharField(max_length=10, default='')
+    account_no = models.CharField(max_length=20, default='')
     amount = models.IntegerField(null=False)
     is_check = models.BooleanField(default=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)

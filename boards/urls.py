@@ -14,4 +14,5 @@ urlpatterns = [
     path('<int:meeting_id>/participate-delete/', views.board_participate_delete, name='participate-delete'),
     path('<int:meeting_id>/gather-done/', views.board_gather_done, name='gather-done'),
     path('<int:meeting_id>/settle/', views.board_settle, name='settle'),
+    path('<int:meeting_id>/meeting-complete/', views.board_meeting_complete, name='meeting-complete'),
 ]

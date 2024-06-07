@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from .forms import BoardForm, CommentForm
 from .models import *
@@ -7,7 +8,7 @@ from .models import *
 
 #게시판 메인
 def board_main(request):
-    meeting_list = Meeting.objects.order_by('created_at')
+    meeting_list = Meeting.objects.order_by('-created_at')
     meeting_status_list = MeetingStatus.objects.all()
     content = {
         'meeting_list': meeting_list,
@@ -150,15 +151,32 @@ def board_gather_done(request, meeting_id):
 def board_settle(request, meeting_id):
     if request.method == 'POST':
         meeting = get_object_or_404(Meeting, id=meeting_id)
-        # meeting.status = MeetingStatus.objects.get(status_number=2)
-        # meeting.total_amount = request.POST['total_amount']
-        # meeting.save()
+        total_amount = int(request.POST['total_amount'])
+        if total_amount <= 0:
+            return redirect('boards:detail', meeting_id=meeting.id)
+        meeting.status = MeetingStatus.objects.get(status_number=2)
+        meeting.total_amount = total_amount
+        meeting.save()
         participation = Participation.objects.filter(meeting=meeting)
-        print(meeting.user_id) # 모임 개설자 id
+        # print(meeting.user_id) # 모임 개설자 id
         for participant in participation:
-            if (meeting.user_id != participant.user):
+            if meeting.user_id != participant.user:
                 print(meeting.user_id, participant.user, 'false!')
-            # print(participant.user) # 모임의 모든 참여자 id(반복)
-        return redirect('boards:main')
+                amount = meeting.total_amount // meeting.participant_count
+                SettleUp.objects.create(
+                    meeting=meeting,
+                    user=participant.user,
+                    bank=participant.user.bank,
+                    account_no=participant.user.account_no,
+                    amount=amount
+                )
+            # print(participant.user_id) # 모임의 모든 참여자 id(반복)
+        return redirect('boards:detail', meeting_id=meeting.id)
 
 
+# 완료하기
+def board_meeting_complete(request, meeting_id):
+    meeting = get_object_or_404(Meeting, id=meeting_id)
+    meeting.status = MeetingStatus.objects.get(status_number=3)
+    meeting.save()
+    return redirect('boards:detail', meeting_id=meeting.id)

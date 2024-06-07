@@ -53,10 +53,14 @@
                                 <a href="{% url 'boards:gather-done' meeting.id %}">
                                     <div class="meeting-btns">모집종료</div>
                                 </a>
-                            {% elif meeting.status.status_number == 1 %}
+                            {% elif meeting.status.status_number == 1 %} <!--정산하기-->
                                 <button type="button" class="state-btn">{{ meeting.status.button_text }}</button>
+                            {% elif meeting.status.status_number == 2 %}
+                                <a href="{% url 'boards:meeting-complete' meeting.id %}"> <!--완료하기-->
+                                    <div class="meeting-btns">{{ meeting.status.button_text }}</div>
+                                </a>
                             {% else %}
-                                <button type="button"><a href="#">완료하기</a></button>
+                                <div class="meeting-btns-complete">{{ meeting.status.button_text }}</div>
                             {% endif %}
                         {% else %}
                             {% if meeting.status.status_number == 0 %}
@@ -73,8 +77,10 @@
                                         </a>
                                     {% endif %}
                                 {% endif %}
-                            {% else %}
+                            {% elif meeting.status.status_number < 3 %}
                                 <div class="meeting-btns">모임진행</div>
+                            {% else %}
+                                <div class="meeting-btns-complete">{{ meeting.status.button_text }}</div>
                             {% endif %}
                         {% endif %}
                     </div>
@@ -165,7 +171,7 @@
             </div>
 
             <div class="settle-modal"> <!--정산하기 모달창-->
-                <div class="settle-modal-title">정산하기</div>
+                <div class="settle-modal-title">정산하기 <span class="error"></span></div>
                 <form action="{% url 'boards:settle' meeting.id %}" method="post" class="settle-form"> <!--⭐⭐ 정산 폼-->
                     {% csrf_token %}
                     <input type="number" id="user_id" name="total_amount" placeholder="택시가격을 입력해주세요. ex) 8000" value="" required>

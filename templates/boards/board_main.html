@@ -86,13 +86,13 @@
                     </div>
                     <div class="post-btn">
                         {% if meeting.user_id == request.user %}
-                            {% if meeting.status.status_number == 0 %}
-                                <div class="meeting-btns">모집종료</div>
-                            {% elif meeting.status.status_number == 1 %}
-                                <div class="meeting-btns">정산하기</div>
-                            {% else %}
-                                <div class="meeting-btns">
-                                    <a href="#">완료하기</a>
+                            {% if meeting.user_id == request.user %}
+                                <div class="{% if meeting.status.status_number >= 3 %}meeting-btns-complete{% else %}meeting-btns{% endif %}">
+                                    {% if meeting.status.status_number == 0 %}
+                                        모집종료
+                                    {% else %}
+                                        {{ meeting.status.button_text }}
+                                    {% endif %}
                                 </div>
                             {% endif %}
                         {% else %}
@@ -106,8 +106,10 @@
                                         <div class="meeting-btns">참여가능</div>
                                     {% endif %}
                                 {% endif %}
-                            {% else %}
+                            {% elif meeting.status.status_number < 3 %}
                                 <div class="meeting-btns">모임진행</div>
+                            {% else %}
+                                <div class="meeting-btns-complete">{{ meeting.status.button_text }}</div>
                             {% endif %}
                         {% endif %}
                     </div>

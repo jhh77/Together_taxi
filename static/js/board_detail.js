@@ -61,3 +61,12 @@ $('.state-btn').on('click', function() { //모임 게시글의 버튼을 눌렀�
 $('.cancel-btn').on('click', function() { //취소를 누르면 정산하기 모달이 사라지게 하기
     $('.settle-modal').slideUp(); 
 });
+
+// 택시 모임 금액 0이나 음수로 입려하면 제출 막기
+$('.yes-btn').on('click', function(event) {
+    amount = $('#user_id').val();
+    if (amount <= 0) {
+        event.preventDefault();
+        $('.error').text('금액을 확인해주세요.');
+    }
+})
