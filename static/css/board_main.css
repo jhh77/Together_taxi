@@ -245,9 +245,27 @@ body {
     padding-top: 3%;
 }
 
-.post-btn > button > a { /*버튼들 링크*/
+.post-btn a { /*버튼들 링크*/
     text-decoration: none;
     color: black;
+}
+
+.meeting-btns {
+    background-color: #F9E3A7;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 5.5rem;
+    height: 2rem;
+    padding: 9% 21%;
+}
+
+.meeting-btns2 {
+    background-color: #F9E3A7;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 5.5rem;
+    height: 2rem;
+    padding: 9% 27%;
 }
 
 .line { /*구분선 div*/

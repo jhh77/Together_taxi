@@ -50,19 +50,31 @@
                         {% button_text meeting.id as Participant_list%}
                         {% if meeting.user_id == request.user %}
                             {% if meeting.status.status_number == 0 %}
-                                <button type="button"><a href="#">모집종료</a></button>
+                                <a href="{% url 'boards:gather-done' meeting.id %}">
+                                    <div class="meeting-btns">모집종료</div>
+                                </a>
                             {% elif meeting.status.status_number == 1 %}
-                                <button type="button"><a href="#">정산하기</a></button>
+                                <button type="button" class="state-btn">{{ meeting.status.button_text }}</button>
                             {% else %}
                                 <button type="button"><a href="#">완료하기</a></button>
                             {% endif %}
                         {% else %}
                             {% if meeting.status.status_number == 0 %}
                                 {% if Participant_list %}
-                            	    <button type="button"><a href="#">참여취소</a></button>
+                                    <a href="{% url 'boards:participate-delete' meeting.id %}">
+                                        <div class="meeting-btns">참여취소</div>
+                                    </a>
                                 {% else %}
-                                    <button type="button"><a href="#">참여하기</a></button>
+                                    {% if meeting.participant_count == 4 %}
+                                        <div></div>
+                                    {% else %}
+                                        <a href="{% url 'boards:participate' meeting.id %}">
+                                            <div class="meeting-btns">참여하기</div>
+                                        </a>
+                                    {% endif %}
                                 {% endif %}
+                            {% else %}
+                                <div class="meeting-btns">모임진행</div>
                             {% endif %}
                         {% endif %}
                     </div>
@@ -76,7 +88,7 @@
 
                     <div class="group-users"> <!--⭐⭐ 택시 모임에 참여한 인원 부분-->
                         {% for member in participant %}
-                            <span class="members">{{ member.meeting.user_id.nickname }}</span>
+                            <span class="members">{{ member.user.nickname }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -154,9 +166,9 @@
 
             <div class="settle-modal"> <!--정산하기 모달창-->
                 <div class="settle-modal-title">정산하기</div>
-                <form action="" method="post" class="settle-form"> <!--⭐⭐ 정산 폼-->
+                <form action="{% url 'boards:settle' meeting.id %}" method="post" class="settle-form"> <!--⭐⭐ 정산 폼-->
                     {% csrf_token %}
-                    <input type="number" id="user_id" name="group-fee" placeholder="택시가격을 입력해주세요. ex) 8000" value="" required>
+                    <input type="number" id="user_id" name="total_amount" placeholder="택시가격을 입력해주세요. ex) 8000" value="" required>
 
                     <div class="settle-modal-btns"> <!--확인, 취소 버튼-->
                         <button type="button" class="cancel-btn">취소</button>

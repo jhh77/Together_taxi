@@ -10,8 +10,8 @@ def board_main(request):
     meeting_list = Meeting.objects.order_by('created_at')
     meeting_status_list = MeetingStatus.objects.all()
     content = {
-        'meeting_list' : meeting_list,
-        'meeting_status_list' : meeting_status_list,
+        'meeting_list': meeting_list,
+        'meeting_status_list': meeting_status_list,
         'request': request,
     }
     return render(request, 'boards/board_main.html', content)
@@ -74,7 +74,7 @@ def board_detail(request, meeting_id):
         'meeting': meeting,
         'meeting_status_list': meeting_status_list,
         'participant': participant,
-        'request' : request,
+        'request': request,
         'comments': comments,
     }
     return render(request, 'boards/board_detail.html', context)
@@ -114,3 +114,51 @@ def comment_delete(request, meeting_id, comment_id):
         comment = get_object_or_404(Comment, id=comment_id)
         comment.delete()
         return redirect('boards:detail', meeting_id=meeting_id)
+
+
+# 모임 참여하기
+def board_participate(request, meeting_id):
+    meeting = get_object_or_404(Meeting, id=meeting_id)
+    if meeting.participant_count == 4:
+        return redirect(request.META.get('HTTP_REFERER', 'default_route'))
+    participation = Participation(meeting=meeting, user=request.user)
+    participation.save()
+
+    meeting.participant_count += 1
+    meeting.save()
+    return redirect(request.META.get('HTTP_REFERER', 'default_route'))
+
+
+# 모임 참여취소하기
+def board_participate_delete(request, meeting_id):
+    meeting = get_object_or_404(Meeting, id=meeting_id)
+    Participation.objects.filter(meeting=meeting, user=request.user).delete()
+    meeting.participant_count -= 1
+    meeting.save()
+    return redirect(request.META.get('HTTP_REFERER', 'default_route'))
+
+
+# 모집 종료하기
+def board_gather_done(request, meeting_id):
+    meeting = get_object_or_404(Meeting, id=meeting_id)
+    meeting.status = MeetingStatus.objects.get(status_number=1)
+    meeting.save()
+    return redirect(request.META.get('HTTP_REFERER', 'default_route'))
+
+
+# 정산하기
+def board_settle(request, meeting_id):
+    if request.method == 'POST':
+        meeting = get_object_or_404(Meeting, id=meeting_id)
+        # meeting.status = MeetingStatus.objects.get(status_number=2)
+        # meeting.total_amount = request.POST['total_amount']
+        # meeting.save()
+        participation = Participation.objects.filter(meeting=meeting)
+        print(meeting.user_id) # 모임 개설자 id
+        for participant in participation:
+            if (meeting.user_id != participant.user):
+                print(meeting.user_id, participant.user, 'false!')
+            # print(participant.user) # 모임의 모든 참여자 id(반복)
+        return redirect('boards:main')
+
+

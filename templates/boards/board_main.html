@@ -87,20 +87,28 @@
                     <div class="post-btn">
                         {% if meeting.user_id == request.user %}
                             {% if meeting.status.status_number == 0 %}
-                                <button type="button"><a href="#">모집종료</a></button>
+                                <div class="meeting-btns">모집종료</div>
                             {% elif meeting.status.status_number == 1 %}
-                                <button type="button"><a href="#">정산하기</a></button>
+                                <div class="meeting-btns">정산하기</div>
                             {% else %}
-                                <button type="button"><a href="#">완료하기</a></button>
+                                <div class="meeting-btns">
+                                    <a href="#">완료하기</a>
+                                </div>
                             {% endif %}
                         {% else %}
                             {% if meeting.status.status_number == 0 %}
-                                {% if  Participant_list %}
-                            	    <button type="button"><a href="#">참여취소</a></button>
+                                {% if Participant_list %}
+                                    <div class="meeting-btns2">참여중</div>
                                 {% else %}
-                                    <button type="button"><a href="#">참여하기</a></button>
+                                    {% if meeting.participant_count == 4 %}
+                                        <div class="meeting-btns">참여불가</div>
+                                    {% else %}
+                                        <div class="meeting-btns">참여가능</div>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %} 
+                            {% else %}
+                                <div class="meeting-btns">모임진행</div>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>

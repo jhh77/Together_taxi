@@ -15,7 +15,7 @@ body {
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
-    /* outline: 1px solid black; */
+    outline: 1px solid black;
     width: 420px;
     height: 100%;
     margin: 0 auto;
@@ -157,17 +157,31 @@ body {
     float: right;
 }
 
-.post-btn > button { /*참여하기(or 종료하기) 버튼*/
-    border: none;
+/*.post-btn > button { */
+/*    border: none;*/
+/*    background-color: #F9E3A7;*/
+/*    border-radius: 8px;*/
+/*    font-size: 13px;*/
+/*    width: 5.5rem;*/
+/*    height: 2rem;*/
+/*    padding-top: 2%;*/
+/*}*/
+
+.post-btn a { /*버튼들 링크*/
+    text-decoration: none;
+    color: black;
+}
+
+.meeting-btns { /*버튼인 div*/
     background-color: #F9E3A7;
     border-radius: 8px;
     font-size: 13px;
     width: 5.5rem;
     height: 2rem;
-    padding-top: 2%;
+    padding: 9% 21%;
 }
 
-.post-btn > button > a { /*버튼들 링크*/
+.post-btn > button > a { /*버튼들 링크- 지우자.....*/
     text-decoration: none;
     color: black;
 }
@@ -179,7 +193,6 @@ body {
     font-size: 13px;
     width: 5.5rem;
     height: 2rem;
-    padding-top: 1%;
     line-height: 2rem;
 }
 
