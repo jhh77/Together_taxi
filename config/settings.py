@@ -134,3 +134,11 @@ LOGIN_REDIRECT_URL = '/'
 
 #세션 만료 시간 설정
 # SESSION_COOKIE_AGE = 60  # 1 hour, in seconds
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.naver.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'johh0588@naver.com'
+EMAIL_HOST_PASSWORD = 'PinJake0588!!.'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

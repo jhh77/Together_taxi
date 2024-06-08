@@ -44,7 +44,7 @@ class Member(AbstractBaseUser):
     user_id = models.CharField(primary_key=True,max_length=15, null=False, blank=False, unique=True)
     nickname = models.CharField(null=False, max_length=8, blank=False)
     bank = models.CharField(null=False, max_length=20, blank=False)
-    account_no = models.CharField(max_length=20, unique=True, blank=False)
+    account_no = models.CharField(max_length=20, blank=False)
 
     # 추가 필드 정의
     is_active = models.BooleanField(default=True)

@@ -15,7 +15,7 @@ body {
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     width: 420px;
     height: 100%;
     margin: 0 auto;
@@ -29,8 +29,14 @@ body {
 .contents {
     /* outline: 1px solid red; */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 100%;
+    width: 100%;
+}
+
+.contents > div {
+    width: 100%;
 }
 
 
@@ -79,86 +85,69 @@ body {
 .user:hover {
     content: url(../image/user-info-yellow.png);
 }
-
-
-/*--------------------------------------*/
-/*여기서부터 컨텐츠 영역*/
-
+/*------------------------*/
+/*여기서부터 컨텐츠*/
 .top-logo { /* 상단 로고 부분 */
     height: 3rem;
     background-color: #F9E3A7;
     font-size: 20px;
     font-weight: 500;
     line-height: 3rem; /*텍스트 수직정렬*/
-    margin-bottom: 6%;
+    margin-bottom: 15%;
 }
 
 .move-back { /* 뒤로 가기 div */
     float: left;
-    margin: 0% 37% 0% 3%;
-}
+    margin: 0.6% 29% 0 3%;
 
-.move-back > a > img {  /*뒤로 가기 아이콘*/
-    padding-bottom: 20%;
 }
 
 .move-back > a { /*뒤로 가기 링크 a*/
     text-decoration: none;
 }
 
-.check-box { /*라디오버튼들 div*/
+.nickname {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.nickname-text {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 2%;
+}
+
+.nickname-change-form {
+    margin-top: 15%;
+}
+
+.nickname-change-form > input {
+    width: 80%;
     margin-bottom: 4%;
-}
-
-.form-check { /*각각의 라디오버튼을 감싸고 있는 div*/
-    font-size: 14px;
-    padding-left: 1px;
-}
-
-.form-check-input[type=radio] { /*라디오버튼*/ 
-    border: 1px solid #5D6DBE;
-}
-
-#submit-btn { /*등록 버튼*/
-    border: none;
-    background-color: #FFCD4A;
-    /* font-size: 14px; */
-    margin-top: 5%;
-    width: 16%;
-    height: 2rem;
-    border-radius: 5px;
-    float: right;
-    margin-right: 4%;
-}
-
-.check-box .form-check-inline { /* 라디오버튼과 라벨 영역*/
-    margin: 0% 0% 0% 3%;
-}
-
-.line { /*구분선 div*/
-    clear: both;
-    border: 1px solid #EFEFEF;
-    margin-top: 18%;
-}
-
-#write-text { /* textarea*/
-    width: 92%;
-    margin: 6% 0% 0% 4%;
-    border: none;
-    resize: none;
-    word-break: break-all;
-    line-height: 1.6rem;
+    margin-left: 8%;
+    height: 2.6rem;
+    border-radius: 10px;
+    border: 1px solid #a5a5a5;
+    padding: .5% 0% 0% 2%;
     font-size: 15px;
-    padding: 2%;
+    font-family: 'SCoreDream';
 }
 
-#text-count { /*글자 수 표시 부분*/
-    width: 96%;
-    text-align: right;
-    color: #5D6DBE;
+.nickname-change-form > input::placeholder {
+    font-size: 15px;
+    color: #c5c5c5;
 }
 
-#write-text:focus { /*textarea focus*/
-    border-radius: 7px;
-    outline: 2px solid #FFCD4A;
+.submit-btn {
+    position: fixed;
+    bottom: 0;
+    font-size: 19px;
+    background-color: #F9E3A7;
+    width: 420px;
+    height: 3rem;
+    z-index: 1;
+    border: none;
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    cursor: pointer;
 }

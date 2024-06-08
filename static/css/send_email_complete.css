@@ -15,12 +15,13 @@ body {
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
-    outline: 1px solid black;
+    /*outline: 1px solid black;*/
     width: 420px;
     height: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
     padding-bottom: 150px;
     z-index: 0;
     position: relative;
@@ -31,6 +32,11 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+}
+
+.contents > div {
+    width: 100%;
 }
 
 
@@ -79,86 +85,41 @@ body {
 .user:hover {
     content: url(../image/user-info-yellow.png);
 }
-
-
-/*--------------------------------------*/
-/*여기서부터 컨텐츠 영역*/
-
+/*------------------------*/
+/*여기서부터 컨텐츠*/
 .top-logo { /* 상단 로고 부분 */
     height: 3rem;
     background-color: #F9E3A7;
     font-size: 20px;
     font-weight: 500;
     line-height: 3rem; /*텍스트 수직정렬*/
-    margin-bottom: 6%;
+    text-align: center;
 }
 
-.move-back { /* 뒤로 가기 div */
-    float: left;
-    margin: 0% 37% 0% 3%;
+.mail-img {
+    text-align: center;
+    margin-top: 40%;
+    margin-bottom: 10%;
+    opacity: 0.8;
 }
 
-.move-back > a > img {  /*뒤로 가기 아이콘*/
-    padding-bottom: 20%;
+.notice {
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 2%;
 }
 
-.move-back > a { /*뒤로 가기 링크 a*/
+.go-login {
+    font-size: 19px;
+    background-color: #F9E3A7;
+    width: 420px;
+    height: 3rem;
+    line-height: 3rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    border: none;
+    text-align: center;
     text-decoration: none;
-}
-
-.check-box { /*라디오버튼들 div*/
-    margin-bottom: 4%;
-}
-
-.form-check { /*각각의 라디오버튼을 감싸고 있는 div*/
-    font-size: 14px;
-    padding-left: 1px;
-}
-
-.form-check-input[type=radio] { /*라디오버튼*/ 
-    border: 1px solid #5D6DBE;
-}
-
-#submit-btn { /*등록 버튼*/
-    border: none;
-    background-color: #FFCD4A;
-    /* font-size: 14px; */
-    margin-top: 5%;
-    width: 16%;
-    height: 2rem;
-    border-radius: 5px;
-    float: right;
-    margin-right: 4%;
-}
-
-.check-box .form-check-inline { /* 라디오버튼과 라벨 영역*/
-    margin: 0% 0% 0% 3%;
-}
-
-.line { /*구분선 div*/
-    clear: both;
-    border: 1px solid #EFEFEF;
-    margin-top: 18%;
-}
-
-#write-text { /* textarea*/
-    width: 92%;
-    margin: 6% 0% 0% 4%;
-    border: none;
-    resize: none;
-    word-break: break-all;
-    line-height: 1.6rem;
-    font-size: 15px;
-    padding: 2%;
-}
-
-#text-count { /*글자 수 표시 부분*/
-    width: 96%;
-    text-align: right;
-    color: #5D6DBE;
-}
-
-#write-text:focus { /*textarea focus*/
-    border-radius: 7px;
-    outline: 2px solid #FFCD4A;
+    color: black;
 }

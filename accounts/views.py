@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import timedelta
-
+from django.core.mail import EmailMessage
 
 
 def index(request): #루트 페이지
@@ -61,9 +61,6 @@ def signUp(request):
         if form.is_valid():
             form.save()
             user_id = form.cleaned_data.get('user_id')
-            # nickname = form.cleaned_data.get('nickname')
-            # bank = form.cleaned_data.get('bank')
-            # account_no = form.cleaned_data.get('account_no')
             password = form.cleaned_data.get('password1')
             print(f"user_id: {user_id}, password: {password}")
             user = authenticate(username=user_id, password=password)
@@ -104,10 +101,78 @@ def account_change(request):
     if request.method == 'POST':
         bank = request.POST['bank']
         account_no = request.POST['account_no']
+
         if not account_no.isdigit():
-            error = '계좌번호는 숫자로만 입력해주세요.'
-            return render(request, 'accounts/account_change.html', {'error': error})
+            error = '계좌는 숫자로만 입력해주세요.'
+            return render(request, 'accounts/account_change.html', {'user': user, 'error': error})
+
+        if Member.objects.filter(account_no=account_no).exists():
+            error = '이미 등록된 계좌입니다. 다시 입력해 주세요.'
+            return render(request, 'accounts/account_change.html', {'user': user, 'error': error})
+
+        user.bank = bank
+        user.account_no = account_no
+        user.save()
+        print("성공!")
+        return redirect('accounts:account_change')
     context = {
         'user': user,
     }
     return render(request, 'accounts/account_change.html', context)
+
+# 닉네임 변경
+def nickname_change(request):
+    user = Member.objects.get(user_id=request.user)
+    if request.method == 'POST':
+        nickname = request.POST['nickname']
+        user.nickname = nickname
+        user.save()
+        return redirect('accounts:nickname_change')
+    return render(request, 'accounts/nickname_change.html', {'user': user})
+
+
+# 내가 쓴 모임
+def user_write_board(request):
+    meeting_list = Meeting.objects.filter(user_id=request.user)
+    return render(request, 'boards/user_write_board.html',
+                  {'meeting_list': meeting_list})
+
+
+# 내가 참여한 모임
+def user_participate_board(request):
+    meeting_id_list = Participation.objects.filter(user=request.user).values_list('meeting', flat=True)
+
+    # 해당 모임들 중에서 사용자가 생성자가 아닌 모임만 필터링
+    meeting_list = Meeting.objects.filter(id__in=meeting_id_list).exclude(user_id=request.user)
+
+    # 필터링된 모임들을 컨텍스트에 추가합니다.
+    return render(request, 'boards/user_participate_board.html',
+                  {'meeting_list': meeting_list})
+
+
+# 메일 발송
+def send_email(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        email_validation = email[email.find('@') + 1:]
+        if email_validation != 'student.hywoman.ac.kr':
+            error = '학교 이메일 주소를 입력해 주세요.'
+            return render(request, 'accounts/send_email.html', {'error': error})
+
+        url = 'http://localhost:8000/accounts/signUp/'
+        email_message = EmailMessage(
+            '함께나리 회원가입',  # 이메일 제목
+            f'안녕하세요. 함께나리입니다.\n\n회원가입을 완료하려면 아래 링크를 클릭하세요!\n{url}',  # 이메일 본문
+            'johh0588@naver.com',  # 발신자 이메일 주소
+            [email],  # 수신자 이메일 리스트
+            headers={'Reply-To': '함께나리@naver.com'}  # 별칭 이메일 주소로 회신받고 싶을 때
+        )
+        email_message.send()
+        return redirect('accounts:send_email_done')
+
+    return render(request, 'accounts/send_email.html')
+
+
+# 메일 발송 완료
+def send_email_done(request):
+    return render(request, 'accounts/send_mail_complete.html')

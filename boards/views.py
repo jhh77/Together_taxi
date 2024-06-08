@@ -71,12 +71,25 @@ def board_detail(request, meeting_id):
     participant = Participation.objects.filter(meeting=meeting_id)
     meeting_status_list = MeetingStatus.objects.all()
     comments = meeting.comments.all()
+
+    from_page = request.GET.get('from')
+    if from_page:
+        request.session['from_page'] = from_page
+
+    if request.session.get('from_page') == 'my_posts':
+        back_url = '/accounts/user-write-board/'
+    elif request.session.get('from_page') == 'main_posts':
+        back_url = '/boards/'
+    else:
+        back_url = '/accounts/user-participate-board/'
+
     context = {
         'meeting': meeting,
         'meeting_status_list': meeting_status_list,
         'participant': participant,
         'request': request,
         'comments': comments,
+        'back_url': back_url,
     }
     return render(request, 'boards/board_detail.html', context)
 

@@ -18,7 +18,7 @@
 
 
             <div class="row" id="user-group">
-                <a href="#" class="col"> <!--⭐⭐여기 링크 연결-->
+                <a href="{% url 'accounts:user_write_board' %}" class="col"> <!--⭐⭐여기 링크 연결-->
                     <div class="user-write-img">
                         <img src="../../static/image/user-write-group.png" alt="">
                     </div>
@@ -26,7 +26,7 @@
                         내가 쓴 모임
                     </div>
                 </a>
-                <a href="#" class="col"> <!--⭐⭐여기 링크 연결-->
+                <a href="{% url 'accounts:user_participate_board' %}" class="col"> <!--⭐⭐여기 링크 연결-->
                     <div class="user-participate-img">
                         <img src="../../static/image/user-group-participate.png" alt="">
                     </div>
@@ -39,7 +39,7 @@
             <div class="accoount-setting"> <!--계정 설정 부분-->
                 <div class="account-text">계정</div>
                 <div class="passwd-change"><a href="{% url 'accounts:account_change' %}">계좌 변경</a></div>
-                <div class="nickname-change"><a href="#">닉네임 변경</a></div>
+                <div class="nickname-change"><a href="{% url 'accounts:nickname_change' %}">닉네임 변경</a></div>
             </div>
 
             <div class="other-setting"> <!--계정 설정 부분-->
