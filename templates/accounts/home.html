@@ -35,7 +35,7 @@
                         <div class="no-settle-img">
                             <img src="../../static/image/no-settle.png" alt="">
                         </div>
-                        <div class="no-settle-notice">정산 내역이 없어요!</div>
+                        <div class="no-settle-notice">보낼 정산 내역이 없어요!</div>
                     {% endif %}
                     {% for settle in settle_list %}
                         <a href="{% url 'accounts:settle-check' settle.id %}">

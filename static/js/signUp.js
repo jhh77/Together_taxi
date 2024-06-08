@@ -51,6 +51,7 @@ $('.submit-btn').click(function (e) {
     const isIdChecked = $('#idCheckSuccess').val();
     if (isIdChecked !== "true") {
         $('#idCheckResponse').text("아이디 확인 후 중복 검사를 해주세요.");
+        $('#idCheckResponse').css('color', '#E07070');
         return false; // 폼 제출 방지
     }
 });

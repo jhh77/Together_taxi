@@ -1,0 +1,203 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.contents > div {
+    width: 100%;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+/*------------------------*/
+/*여기서부터 컨텐츠*/
+.top-logo { /* 상단 로고 부분 */
+    height: 3rem;
+    background-color: #F9E3A7;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 3rem; /*텍스트 수직정렬*/
+    margin-bottom: 5%;
+}
+
+.move-back { /* 뒤로 가기 div */
+    float: left;
+    margin: 0.6% 32% 0 3%;
+
+}
+
+.move-back > a { /*뒤로 가기 링크 a*/
+    text-decoration: none;
+}
+
+.bank-account { /*통장 이미지 div*/
+    clear: both;
+    text-align: center;
+}
+
+.bank-account > img {/*통장 이미지*/
+    /*margin-right: 5%;*/
+}
+
+.notice { /*주의사항 문구*/
+    font-size: 15px;
+    margin-bottom: 13%;
+    color: #E07070;
+    font-weight: 500;
+}
+
+.bank-read { /*게좌 정보 조회 div*/
+    text-align: center;
+}
+
+.bank-read > input { /*계좌 정보 조회 부분 input들*/
+    width: 80%;
+    margin-bottom: 4%;
+    height: 2.6rem;
+    border-radius: 10px;
+    border: 1px solid #a5a5a5;
+    padding: .5% 0% 0% 2%;
+    background-color: #F3F8FF;
+}
+
+.bank-read > input:focus {
+    outline: 1px solid #F8F8F8;
+    border: 1px solid #a5a5a5;
+    box-shadow: 0px 4px 8px 0px #f0f0f0;
+}
+
+.bank-read > input::placeholder {
+    font-size: 15px;
+    color: black;
+    font-family: 'SCoreDream';
+}
+
+.current-account, .new-account { /*현재 계좌 div*/
+    margin-left: 8.5%;
+    margin-bottom: 3%;
+    font-weight: 500;
+    font-size: 17px;
+    color: #262627;
+}
+
+.new-account { /*변경할 계좌 텍스트*/
+    margin-top: 10%;
+}
+
+.submit-btn { /*변경하기 버튼*/
+    position: fixed;
+    bottom: 0;
+    font-size: 19px;
+    background-color: #F9E3A7;
+    width: 420px;
+    height: 3rem;
+    z-index: 1;
+    border: none;
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.account-form > input { /*변경 계좌 입력 input*/
+    width: 80%;
+    margin-bottom: 4%;
+    margin-left: 8%;
+    height: 2.6rem;
+    border-radius: 10px;
+    border: 1px solid #a5a5a5;
+    padding: .5% 0% 0% 2%;
+}
+
+.account-form > input::placeholder {
+    font-family: 'SCoreDream';
+    font-size: 15px;
+    color: #c5c5c5;
+}
+
+.account-form > input:focus {
+    outline: 1px solid #FFCD4A;
+    border: none;
+    box-shadow: 0px 4px 8px 0px #f0f0f0;
+}
+
+.error {
+    margin-left: 8%;
+    font-size: 15px;
+    color: #E07070;
+}

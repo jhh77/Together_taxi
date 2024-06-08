@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from .models import Member
 from boards.models import *
 from django.shortcuts import render, redirect
-from accounts.forms import SignupForm
+from accounts.forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -96,3 +96,18 @@ def user_page(request):
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')
+
+
+# 계좌 변경
+def account_change(request):
+    user = Member.objects.get(user_id=request.user)
+    if request.method == 'POST':
+        bank = request.POST['bank']
+        account_no = request.POST['account_no']
+        if not account_no.isdigit():
+            error = '계좌번호는 숫자로만 입력해주세요.'
+            return render(request, 'accounts/account_change.html', {'error': error})
+    context = {
+        'user': user,
+    }
+    return render(request, 'accounts/account_change.html', context)

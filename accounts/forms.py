@@ -24,15 +24,28 @@ class SignupForm(UserCreationForm):
             user.save()
         return user
 
+
     def clean_account_no(self): #계좌번호 방지 함수
         account_no = self.cleaned_data.get('account_no')
+
+        # 계좌번호 최대 입력 글자
+        if len(account_no) > 20:
+            raise forms.ValidationError('최대 20자까지 입력 가능합니다.')
+
+        # 계좌번호가 숫자로만 구성되어 있는지 확인
+        if not account_no.isdigit():
+            raise forms.ValidationError('계좌번호는 숫자로만 입력해주세요.')
+
+        # 계좌번호 중복 검사
         if account_no:
             qs = Member.objects.filter(account_no=account_no)
             if qs.exists():
                 raise forms.ValidationError('이미 등록된 계좌입니다. 다시 입력해주세요.')
             return account_no
 
-#유저 수정 폼
+
+
+# 유저 수정 폼
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
