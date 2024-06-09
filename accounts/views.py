@@ -74,22 +74,31 @@ def signUp(request):
     return render(request, 'accounts/signUp.html', {'form':form})
 
 
+# 회원 탈퇴
+def user_delete(request):
+    if request.method == 'POST':
+        if 'check' in request.POST:
+            print('체크함...')
+    return render(request, 'accounts/user_delete.html')
+
+
 def check_id(request): #아이디 중복검사
     user_id = request.POST.get('user_id')
     is_taken = Member.objects.filter(user_id=user_id).exists() #아이디값이 존재하는지
     return JsonResponse({'is_taken': is_taken}) #결과 전송(json으로)
 
-#회원가입 완료 페이지로 이동?
+
+# 회원가입 완료 페이지
 def signUpComplete(request):
     return render(request, 'accounts/signUpComplete.html')
 
 
-#마이페이지
+# 마이페이지
 def user_page(request):
     return render(request, 'accounts/myPage.html')
 
 
-#로그아웃
+# 로그아웃
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')
@@ -162,11 +171,12 @@ def send_email(request):
         url = 'http://localhost:8000/accounts/signUp/'
         email_message = EmailMessage(
             '함께나리 회원가입',  # 이메일 제목
-            f'안녕하세요. 함께나리입니다.\n\n회원가입을 완료하려면 아래 링크를 클릭하세요!\n{url}',  # 이메일 본문
+            f'<h2>안녕하세요. 함께나리입니다.</h2><p>회원가입을 완료하려면 아래를 클릭해 주세요!</p><a href="{url}">클릭</a>',  # 이메일 본문
             'johh0588@naver.com',  # 발신자 이메일 주소
             [email],  # 수신자 이메일 리스트
             headers={'Reply-To': '함께나리@naver.com'}  # 별칭 이메일 주소로 회신받고 싶을 때
         )
+        email_message.content_subtype = 'html'
         email_message.send()
         return redirect('accounts:send_email_done')
 

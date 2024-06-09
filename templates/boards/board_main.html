@@ -68,9 +68,6 @@
 
                     <div class="user-nickname"> <!-- 닉네임 -->
                         {{ meeting.user_id.nickname }}
-                        {% if meeting.user_id == request.user %}
-                            <span class="my-board">(내 글)</span>
-                        {% endif %}
                     </div>
 
                     {% if meeting.status.status_number > 0 %}

@@ -8,6 +8,7 @@ app_name = 'accounts'
 urlpatterns = [
     path('send-email/', views.send_email, name='send_email'),
     path('send-email/done/', views.send_email_done, name='send_email_done'),
+    path('user-delete/', views.user_delete, name='user_delete'),
     path('signUp/', views.signUp, name='signUp'), #회원가입
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'), #로그인
     path('signUp/id-check/', views.check_id, name='id-check'), #아이디 중복 검사

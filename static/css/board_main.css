@@ -208,11 +208,6 @@ body {
     margin-left: 2%;
 }
 
-.my-board { /*내 글 표시*/
-    font-size: 12px;
-    color: #5D6DBE;
-}
-
 .route { /*경로 div*/
     margin-left: auto;
     color: #5D6DBE;

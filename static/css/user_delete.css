@@ -1,0 +1,184 @@
+/* 폰트 적용*/
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+/*------------------------*/
+/*여기서부터 컨텐츠*/
+.top-logo { /* 상단 로고 부분 */
+    height: 3rem;
+    background-color: #F9E3A7;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 3rem; /*텍스트 수직정렬*/
+}
+
+.move-back { /* 뒤로 가기 div */
+    float: left;
+    margin: 0% 32.5% 0% 3%;
+
+}
+
+.move-back > a { /*뒤로 가기 링크 a*/
+    text-decoration: none;
+}
+
+.move-back > a > img {
+    margin-bottom: 20%;
+}
+
+
+.title-text { /*제목 div*/
+    margin-top: 15%;
+}
+
+.title-text, .title-text-color { /*탈퇴할 거냐는 텍스트들*/
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.title-text-color { /*탈퇴 강조 텍스트*/
+    color: #5D6DBE;
+    font-weight: 600;
+    margin-bottom: 10%;
+}
+
+
+
+.notice-guide { /*유의사항 확인하라는 문구 텍스트*/
+    font-size: 15px;
+    text-align: center;
+    color: #717171;
+    margin-bottom: 4%;
+}
+
+
+.notice-box { /*유의사항*/
+    width: 80%;
+    margin: 0 auto;
+    background-color: #FFF9E7;
+    border-radius: 13px;
+    font-size: 14px;
+    padding: 7% 5%;
+}
+
+.list, .list>li:last-child  {
+    margin-bottom: 0;
+}
+
+.list > li { /*유의사항들*/
+    margin-bottom: 8%;
+}
+
+.form-check { /*체크박스 div*/
+    margin-top: 7%;
+}
+
+#flexCheckDefault { /*체크박스*/
+    margin-left: 17%;
+    margin-right: 2%;
+    border: 1px solid #5D6DBE;
+}
+
+#flexCheckDefault:checked {
+    background-color: #5D6DBE;
+}
+
+.submit-btn {
+    position: fixed;
+    bottom: 0;
+    font-size: 19px;
+    background-color: #F9E3A7;
+    width: 420px;
+    height: 3rem;
+    z-index: 1;
+    border: none;
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.error {
+    margin-top: 2%;
+    margin-right: 4%;
+    text-align: center;
+    color: #E07070;
+}

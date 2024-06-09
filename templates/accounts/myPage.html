@@ -45,7 +45,7 @@
             <div class="other-setting"> <!--계정 설정 부분-->
                 <div class="other-text">기타</div>
                 <div class="logout"><a href="{% url 'accounts:logout' %}">로그아웃</a></div>
-                <div class="user-delete"><button type="button">회원 탈퇴</button></div>
+                <div class="user-delete"><a href="{% url 'accounts:user_delete' %}">회원 탈퇴</a></div>
             </div>
         </div>
         {% include 'menuBar_mypage.html' %}
