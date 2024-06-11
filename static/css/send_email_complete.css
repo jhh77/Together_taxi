@@ -15,9 +15,9 @@ body {
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
-    /*outline: 1px solid black;*/
+    outline: 1px solid black;
     width: 420px;
-    height: 100%;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: row; /*column -> row*/

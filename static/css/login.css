@@ -7,7 +7,8 @@ body {
     height: 100%;
 }
 
-::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+/*화면 스크롤바로 인해 화면 밀림 방지*/
+::-webkit-scrollbar {
 	display: none;
 }
 
@@ -17,20 +18,21 @@ body {
     font-weight: 400;
     outline: 1px solid black;
     width: 420px;
-    height: 100%;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
     padding-bottom: 150px;
     z-index: 0;
     position: relative;
 }
 
 .contents {
-    /* outline: 1px solid red; */
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /*height: 100vh;*/
+    width: 100%;
 }
 
 /*-------------------------------------------------------------------*/

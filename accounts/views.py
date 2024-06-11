@@ -142,7 +142,7 @@ def nickname_change(request):
 
 # 내가 쓴 모임
 def user_write_board(request):
-    meeting_list = Meeting.objects.filter(user_id=request.user)
+    meeting_list = Meeting.objects.filter(user_id=request.user).order_by('-created_at')
     return render(request, 'boards/user_write_board.html',
                   {'meeting_list': meeting_list})
 
@@ -152,7 +152,7 @@ def user_participate_board(request):
     meeting_id_list = Participation.objects.filter(user=request.user).values_list('meeting', flat=True)
 
     # 해당 모임들 중에서 사용자가 생성자가 아닌 모임만 필터링
-    meeting_list = Meeting.objects.filter(id__in=meeting_id_list).exclude(user_id=request.user)
+    meeting_list = Meeting.objects.filter(id__in=meeting_id_list).exclude(user_id=request.user).order_by('-created_at')
 
     # 필터링된 모임들을 컨텍스트에 추가합니다.
     return render(request, 'boards/user_participate_board.html',

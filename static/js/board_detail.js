@@ -69,4 +69,10 @@ $('.yes-btn').on('click', function(event) {
         event.preventDefault();
         $('.error').text('금액을 확인해주세요.');
     }
-})
+});
+
+//높이 조절
+$(document).ready(function() {
+    let height = $(document).height();
+    $('body, html').css('height', height + 150 + 'px');
+});

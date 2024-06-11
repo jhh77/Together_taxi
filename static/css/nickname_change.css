@@ -15,9 +15,9 @@ body {
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
-    /*outline: 1px solid black;*/
+    outline: 1px solid black;
     width: 420px;
-    height: 100%;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -29,10 +29,8 @@ body {
 .contents {
     /* outline: 1px solid red; */
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     height: 100%;
-    width: 100%;
 }
 
 .contents > div {
@@ -98,12 +96,16 @@ body {
 
 .move-back { /* 뒤로 가기 div */
     float: left;
-    margin: 0.6% 29% 0 3%;
+    margin: 0% 29% 0% 3%;
 
 }
 
 .move-back > a { /*뒤로 가기 링크 a*/
     text-decoration: none;
+}
+
+.move-back > a > img {
+    margin-bottom: 17%;
 }
 
 .nickname {
@@ -122,7 +124,7 @@ body {
 }
 
 .nickname-change-form > input {
-    width: 80%;
+    width: 84%;
     margin-bottom: 4%;
     margin-left: 8%;
     height: 2.6rem;

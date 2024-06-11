@@ -29,16 +29,9 @@ body {
 .contents {
     /* outline: 1px solid red; */
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     height: 100%;
-    width: 100%;
 }
-
-.contents > div {
-    width: 100%;
-}
-
 
 /*메뉴바(footer)*/
 .menu {
@@ -98,12 +91,15 @@ body {
 
 .move-back { /* 뒤로 가기 div */
     float: left;
-    margin: 0.6% 32% 0 3%;
-
+    margin: 0% 32% 0 3%;
 }
 
 .move-back > a { /*뒤로 가기 링크 a*/
     text-decoration: none;
+}
+
+.move-back > a > img {
+    margin-bottom: 17%;
 }
 
 .bank-account { /*통장 이미지 div*/
@@ -127,12 +123,12 @@ body {
 }
 
 .bank-read > input { /*계좌 정보 조회 부분 input들*/
-    width: 80%;
+    width: 83%;
     margin-bottom: 4%;
     height: 2.6rem;
     border-radius: 10px;
     border: 1px solid #a5a5a5;
-    padding: .5% 0% 0% 2%;
+    padding-left: 2%;
     background-color: #F3F8FF;
 }
 
@@ -175,13 +171,13 @@ body {
 }
 
 .account-form > input { /*변경 계좌 입력 input*/
-    width: 80%;
+    width: 83%;
     margin-bottom: 4%;
     margin-left: 8%;
     height: 2.6rem;
     border-radius: 10px;
     border: 1px solid #a5a5a5;
-    padding: .5% 0% 0% 2%;
+    padding-left: 2%;
     font-size: 15px;
     font-family: 'SCoreDream';
 }

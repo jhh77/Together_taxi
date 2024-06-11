@@ -29,16 +29,9 @@ body {
 .contents {
     /* outline: 1px solid red; */
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+    flex-direction: column;
+    height: calc(100vh + 150px);
 }
-
-.contents > div {
-    width: 100%;
-}
-
 
 /*메뉴바(footer)*/
 .menu {
@@ -97,12 +90,16 @@ body {
 
 .move-back { /* 뒤로 가기 div */
     float: left;
-    margin: 0.6% 29% 0% 3%;
+    margin: 0% 29% 0% 3%;
 
 }
 
 .move-back > a { /*뒤로 가기 링크 a*/
     text-decoration: none;
+}
+
+.move-back > a > img {
+    margin-bottom: 17%;
 }
 
 .post { /*게시판 글 전체 div*/
@@ -135,7 +132,7 @@ body {
 }
 
 .end-icon { /*모집 종료 아이콘 div*/
-    margin-top: 1%;
+    margin-top: 0.2%;
     margin-left: 2%;
 }
 
@@ -180,8 +177,7 @@ body {
 
 .post-btn { /*참여하기(or 종료하기) 버튼 div*/
     float: right;
-    margin-top: 1%;
-    margin-right: 6%;
+    /*margin-top: 1%;*/
 }
 
 .post-btn > button { /*참여하기(or 종료하기) 버튼*/
@@ -198,11 +194,9 @@ body {
     background-color: #F9E3A7;
     border-radius: 8px;
     font-size: 13px;
-    width: 4.0rem;
-    height: 1.4rem;
-    line-height: 1.5rem;
-    text-align: center;
-    padding: 8% 21% ;
+    width: 5.5rem;
+    height: 2rem;
+    padding: 9% 21%;
 }
 
 .meeting-btns2 {

@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 150px;
+    padding-bottom: 455px;
     z-index: 0;
     position: relative;
 }
@@ -50,7 +50,7 @@ img { /*회원가입 완료 이미지*/
     object-fit: cover;
     width: 36%;
     height: 36%;
-    margin: 0 auto;
+    margin-left: 35%;
 }
 
 .complete-text, .text { /*완료 문구들*/
@@ -59,11 +59,12 @@ img { /*회원가입 완료 이미지*/
 
 .complete-text { /*회원가입 완료 문구*/
     font-size: 24px;
-    margin: 1% 0% 3% 0%;
+    margin: 5% 0% 3% 4%;
 }
 
 .text { /*가입 완료 문구*/
     font-size: 16px;
+    margin-left: 4%;
 }
 
 button { /*확인 버튼*/

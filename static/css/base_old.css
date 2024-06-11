@@ -11,14 +11,13 @@ body {
 	display: none;
 }
 
-
 /*전체 영역*/
 .container-content {
     font-family: 'SCoreDream';
     font-weight: 400;
     outline: 1px solid black;
     width: 420px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -28,16 +27,12 @@ body {
 }
 
 .contents {
+    /* outline: 1px solid red; */
     display: flex;
     flex-direction: column;
     height: 100%;
-
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*flex-wrap: wrap;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
 }
+
 
 /*메뉴바(footer)*/
 .menu {
@@ -84,4 +79,4 @@ body {
 .user:hover {
     content: url(../image/user-info-yellow.png);
 }
-/*------------------------*/
+
