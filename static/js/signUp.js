@@ -43,6 +43,7 @@ $('#idCheckBtn').click(function () {
         });
     } else {
         $('#idCheckResponse').text("아이디를 입력해주세요.");
+        $('#idCheckResponse').css('color', '#E07070');
     }
 });
 
@@ -53,5 +54,8 @@ $('.submit-btn').click(function (e) {
         $('#idCheckResponse').text("아이디 확인 후 중복 검사를 해주세요.");
         $('#idCheckResponse').css('color', '#E07070');
         return false; // 폼 제출 방지
+    }
+    else {
+        $('#idCheckResponse').text('');
     }
 });

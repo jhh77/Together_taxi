@@ -133,7 +133,10 @@ AUTH_USER_MODEL = 'accounts.Member' #회원가입 모델 커스터마이징 설�
 LOGIN_REDIRECT_URL = '/'
 
 #세션 만료 시간 설정
-# SESSION_COOKIE_AGE = 60  # 1 hour, in seconds
+SESSION_COOKIE_AGE = 3600 # 1 hour, in seconds
+
+LOGOUT_REDIRECT_URL = '/login/'  # 자동 로그아웃 시 로그인 페이지 URL로 변경
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.naver.com'

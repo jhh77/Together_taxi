@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>함께나리:로그인</title>
-    <link rel="stylesheet" href="../../static/css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
                     택시 모임을 이용해보세요!
                 </div>
                 <div class="banner-img"> <!--배너에 사용되는 이미지-->
-                    <img src="../../static/image/group_taxi.png" alt="">
+                    <img src="{% static 'image/group_taxi.png' %}" alt="">
                 </div>
             </div>
 

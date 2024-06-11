@@ -209,9 +209,11 @@ body {
     background-color: #F9E3A7;
     border-radius: 8px;
     font-size: 13px;
-    width: 5.5rem;
-    height: 2rem;
-    padding: 9% 27%;
+    width: 4.0rem;
+    height: 1.4rem;
+    line-height: 1.5rem;
+    text-align: center;
+    padding: 8% 21% ;
 }
 
 .meeting-btns-complete { /*모임 완료 상태일 때*/

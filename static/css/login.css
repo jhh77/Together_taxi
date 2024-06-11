@@ -39,6 +39,7 @@ body {
 .page-banner { /*배너 영역*/
     background-color: #F9E3A7;
     margin-bottom: 12%;
+    box-shadow: 0px 4px 5px rgba(249, 227, 167, 0.5);
 }
 
 .banner-title { /*배너 제목(함께나리) 부분*/
@@ -54,7 +55,7 @@ body {
 
 .banner-img { /*배너 이미지 부분*/
     text-align: right;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 /*------------*/
 
