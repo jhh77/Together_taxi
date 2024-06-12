@@ -47,7 +47,7 @@ class Comment(models.Model):
 
 #모임 정산 테이블
 class SettleUp(models.Model):
-    meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, related_name='settle')
+    meeting = models.ForeignKey(Meeting, on_delete=models.SET_NULL, null=True, related_name='settle')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bank = models.CharField(max_length=10, default='')
     account_no = models.CharField(max_length=20, default='')
