@@ -16,7 +16,7 @@
                 {% csrf_token %}
                 {% for route in routeInfo %}
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="route" id="inlineRadio{{ forloop.counter }}" value="{{ route.route_id }}">
+                    <input class="form-check-input" type="radio" name="route" id="inlineRadio{{ forloop.counter }}" value="{{ route.route_id }}" required>
                     <label class="form-check-label" for="inlineRadio{{ forloop.counter }}">{{ route.value }}</label>
                 </div>
                 {% endfor %}
@@ -25,7 +25,7 @@
 
                 <div class="line"></div>
 
-                <textarea name="meeting_content" id="write-text" placeholder="글을 작성해주세요." maxlength="149"></textarea>
+                <textarea name="meeting_content" id="write-text" placeholder="글을 작성해주세요." maxlength="149" spellcheck="false" required></textarea>
 
                 <div id="text-count">0 / 150</div>
             </form>

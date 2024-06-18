@@ -43,19 +43,6 @@ def board_write(request):
 
 
 #게시글 상세보기 & 댓글 쓰기
-#댓글 쓰기 추가하기 전 코드
-# def board_detail(request, meeting_id):
-#     meeting = Meeting.objects.get(id=meeting_id)
-#     participant = Participation.objects.filter(meeting=meeting_id)
-#     meeting_status_list = MeetingStatus.objects.all()
-#     context = {
-#         'meeting': meeting,
-#         'meeting_status_list': meeting_status_list,
-#         'participant': participant,
-#         'request' : request,
-#     }
-#     return render(request, 'boards/board_detail.html', context)
-
 def board_detail(request, meeting_id):
     meeting = Meeting.objects.get(id=meeting_id)
     if request.method == 'POST':
@@ -171,10 +158,9 @@ def board_settle(request, meeting_id):
         meeting.total_amount = total_amount
         meeting.save()
         participation = Participation.objects.filter(meeting=meeting)
-        # print(meeting.user_id) # 모임 개설자 id
         for participant in participation:
             if meeting.user_id != participant.user:
-                print(meeting.user_id, participant.user, 'false!')
+                # print(meeting.user_id, participant.user, 'false!')
                 amount = meeting.total_amount // meeting.participant_count
                 SettleUp.objects.create(
                     meeting=meeting,
@@ -183,7 +169,6 @@ def board_settle(request, meeting_id):
                     account_no=meeting.user_id.account_no,
                     amount=amount
                 )
-            # print(participant.user_id) # 모임의 모든 참여자 id(반복)
         return redirect('boards:detail', meeting_id=meeting.id)
 
 

@@ -15,13 +15,6 @@ $('#comment-area').on('input', function() {
 //-------------------------
 
 //수정하기, 삭제하기 버튼 뜨고 사라지게 하기
-// $('#dots-btn').on('click', function() {
-//     if ($('.btns').is(':hidden')) {
-//         $('.btns').slideDown(0.5);
-//     } else {
-//         $('.btns').slideUp(0.5);
-//     }
-// });
 $('#dots-btn').on('click', function() { //...점 버튼 눌렀을 때
     if ($('.edit-btn').is(':hidden')) { //버튼이 안 보이는 상태면
         $('.delete-btn').slideDown(function() { //버튼이 뜨도록

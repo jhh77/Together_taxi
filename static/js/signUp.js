@@ -19,6 +19,14 @@ $('#passwd-icon').click(function() {
 //아이디 중복검사 서버에 요청하기
 $('#idCheckBtn').click(function () {
     let userId = $('#user_id').val(); //아이디 값 가져오기
+    let regex = /^[a-zA-Z0-9]+$/;
+
+    if (!regex.test(userId)) {
+        $('#idCheckResponse').text('아이디는 영문자와 숫자만 가능합니다.');
+        $('#idCheckResponse').css('color', '#E07070');
+        return;
+    }
+
     if (userId) { //값이 있으면
         $.ajax({ //서버로 요청
             url: '/accounts/signUp/id-check/',

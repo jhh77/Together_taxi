@@ -17,7 +17,7 @@ from django.core.mail import EmailMessage
 def index(request): #루트 페이지
     participate_count = 0
     if request.user.is_authenticated:
-        # 모임 참여 횟수 구하기
+        # 모임 참여 횟수 구하기(모집 완료된 것만 카운트 + 내가 쓴 글도 카운트)
         meetings = Participation.objects.filter(user=request.user)
         for meeting in meetings:
             meeting_detail = Meeting.objects.get(id=meeting.meeting_id)
@@ -31,8 +31,9 @@ def index(request): #루트 페이지
 
         # 정산 내역 가져오기
         now = timezone.now()
-        five_days_ago = now - timedelta(days=5)
+        five_days_ago = now - timedelta(days=5) #5일치
         settle_list = SettleUp.objects.filter(user=request.user, created_at__gte=five_days_ago)
+        settle_list = settle_list.order_by('-created_at')
         context = {
             'participate_count': participate_count,
             'meeting_open_count': meeting_open_count,
@@ -43,7 +44,7 @@ def index(request): #루트 페이지
         return render(request, 'accounts/login.html')
 
 
-# 정산 내역 체크
+# 정산 내역 체크 - DB에 저장
 def settle_check(request, settle_id):
     settle = SettleUp.objects.get(id=settle_id)
     if settle.is_check:
@@ -82,7 +83,8 @@ def user_delete(request):
     return render(request, 'accounts/user_delete.html')
 
 
-def check_id(request): #아이디 중복검사
+#아이디 중복검사
+def check_id(request):
     user_id = request.POST.get('user_id')
     is_taken = Member.objects.filter(user_id=user_id).exists() #아이디값이 존재하는지
     return JsonResponse({'is_taken': is_taken}) #결과 전송(json으로)
@@ -111,14 +113,17 @@ def account_change(request):
         bank = request.POST['bank']
         account_no = request.POST['account_no']
 
+        # 계좌번호 숫자만 입력했는지 검사
         if not account_no.isdigit():
             error = '계좌는 숫자로만 입력해주세요.'
             return render(request, 'accounts/account_change.html', {'user': user, 'error': error})
 
+        # 계좌번호 중복 검사
         if Member.objects.filter(account_no=account_no).exists():
             error = '이미 등록된 계좌입니다. 다시 입력해 주세요.'
             return render(request, 'accounts/account_change.html', {'user': user, 'error': error})
 
+        # 변경
         user.bank = bank
         user.account_no = account_no
         user.save()
@@ -140,7 +145,7 @@ def nickname_change(request):
     return render(request, 'accounts/nickname_change.html', {'user': user})
 
 
-# 내가 쓴 모임
+# 내가 쓴 모임 (모임 작성 아이디가 유저 아이디와 같은 것들)
 def user_write_board(request):
     meeting_list = Meeting.objects.filter(user_id=request.user).order_by('-created_at')
     return render(request, 'boards/user_write_board.html',
@@ -149,12 +154,11 @@ def user_write_board(request):
 
 # 내가 참여한 모임
 def user_participate_board(request):
-    meeting_id_list = Participation.objects.filter(user=request.user).values_list('meeting', flat=True)
+    meeting_id_list = Participation.objects.filter(user=request.user).values_list('meeting', flat=True) # 모임 객체 가져오기
 
     # 해당 모임들 중에서 사용자가 생성자가 아닌 모임만 필터링
     meeting_list = Meeting.objects.filter(id__in=meeting_id_list).exclude(user_id=request.user).order_by('-created_at')
 
-    # 필터링된 모임들을 컨텍스트에 추가합니다.
     return render(request, 'boards/user_participate_board.html',
                   {'meeting_list': meeting_list})
 
@@ -164,6 +168,8 @@ def send_email(request):
     if request.method == 'POST':
         email = request.POST['email']
         email_validation = email[email.find('@') + 1:]
+
+        # 학교 이메일인지 검사
         if email_validation != 'student.hywoman.ac.kr':
             error = '학교 이메일 주소를 입력해 주세요.'
             return render(request, 'accounts/send_email.html', {'error': error})

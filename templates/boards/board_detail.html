@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="post-content"> <!--⭐⭐게시글 내용-->
-                    {{ meeting.meeting_content }}
+                    {{ meeting.meeting_content|linebreaksbr }}
                 </div>
 
                 <div class="post-ft"> <!--인원수, 참여하기(or 종료하기) 버튼-->
@@ -106,7 +106,7 @@
                 <form action="/boards/{{ meeting.id }}/" method="post" id="comment-form"> <!--⭐⭐댓글 등록 textarea-->
                     {% csrf_token %}
                     <div>
-                        <textarea name="content" id="comment-area" placeholder="댓글 작성" maxlength="99"></textarea>
+                        <textarea name="content" id="comment-area" placeholder="댓글 작성" maxlength="99" spellcheck="false"></textarea>
                         <div class="submit-btn">
                             <button type="submit">등록</button>
                         </div>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="comment-content"> <!--댓글 내용-->
-                    {{ comment.content }}
+                    {{ comment.content|linebreaksbr }}
                 </div>
             </div>
             <div class="comment-line"></div> <!--댓글 구분선-->
@@ -156,7 +156,6 @@
 
             <div id="modal"> <!--모달창-->
                 <div class="modal-contents">
-                    <!-- <div class="modal-close"></div> -->
                     <button type="button" class="btn-close"></button>
                     <div class="modal-title">글을 삭제하시겠습니까?</div>
                     <a href="#"><div class="closePopup">아니오</div></a>

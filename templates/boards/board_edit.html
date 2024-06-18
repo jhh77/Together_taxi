@@ -21,22 +21,12 @@
                         <label class="form-check-label" for="inlineRadio{{ forloop.counter }}">{{ route.value }}</label>
                     </div>
                 {% endfor %}
-                <!--
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">한양대역 ↔ 학교</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                    <label class="form-check-label" for="inlineRadio3">마장역 ↔ 학교</label>
-                </div>
-                -->
 
                 <button type="submit" id="submit-btn">등록</button> <!--⭐등록버튼-->
 
                 <div class="line"></div>
 
-                <textarea name="meeting_content" id="write-text" placeholder="글을 작성해주세요." maxlength="149">{{ meeting.meeting_content }}</textarea>
+                <textarea name="meeting_content" id="write-text" placeholder="글을 작성해주세요." maxlength="149" spellcheck="false" required>{{ meeting.meeting_content }}</textarea>
 
                 <div id="text-count">0 / 150</div>
             </form>

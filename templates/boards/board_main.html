@@ -74,7 +74,7 @@
 
                 <a href="{% url 'boards:detail' meeting.id %}?from=main_posts" class="detail_link">
                     <div class="post-content"> <!--게시글 내용-->
-                        {{ meeting.meeting_content }}
+                        {{ meeting.meeting_content|linebreaksbr }}
                     </div>
                 </a>
 

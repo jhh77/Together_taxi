@@ -27,8 +27,6 @@ $('#submit-btn').on('click', function(evt) {
     if ($('.form-check-input:checked').length === 0) {
         // 만약 하나도 선택되지 않았다면 submit을 막음
         evt.preventDefault();
-        alert('경로를 지정해주세요!');
-
         $('.form-check-input')[0].focus();
         
     }

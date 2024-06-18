@@ -30,7 +30,7 @@
 
                     <label for="bank">은행명</label> <!--⭐은행명-->
                     <div class="bank">
-                        <input type="text" id="bank" name="bank" placeholder="은행명" value="{{ form.bank.value|default_if_none:'' }}" required>
+                        <input type="text" id="bank" name="bank" placeholder="은행명 ex)국민" value="{{ form.bank.value|default_if_none:'' }}" required>
                         {% if form.bank.errors %}
                             <div class="error">{{ form.bank.errors }}</div>
                         {% endif %}

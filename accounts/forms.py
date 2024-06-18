@@ -10,6 +10,7 @@ class SignupForm(UserCreationForm):
         model = Member
         fields = ['user_id', 'nickname', 'bank', 'account_no']
 
+    # 비밀번호 일치 검사
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")

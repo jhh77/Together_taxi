@@ -91,7 +91,7 @@ body {
 
 .move-back { /* 뒤로 가기 div */
     float: left;
-    margin: 0% 25% 0% 3%;
+    margin: 0% 29% 0% 3%;
 }
 
 .move-back > a { /*뒤로 가기 링크 a*/
